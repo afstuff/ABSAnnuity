@@ -230,8 +230,8 @@ function cmdPfa_Browse_onclick() {
                                     <asp:TextBox ID="txtBrokerNum" AutoPostBack="true" MaxLength="10" runat="server" OnTextChanged="DoProc_Validate_Broker"></asp:TextBox>
                                     &nbsp;<asp:Label ID="lblBrokerName" Text="Full Name:" runat="server"></asp:Label>
                                     &nbsp;<asp:TextBox ID="txtBrokerName" Enabled="False" runat="server" Width="250px"></asp:TextBox>
-                                    &nbsp;<input type="button" id="cmdBroker_Setup" name="cmdBroker_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('../i_life/PRG_LI_BRK_DTL.aspx?optid=001&optd=Brokers_Agents_Details&popup=YES')" />
-                                    &nbsp;<input type="button" id="cmdBroker_Browse" name="cmdBroker_Browse" visible="false" value="Browse..." onclick="javascript: Sel_Func_Open('BRK', '../WebForm3.aspx?popup=YES', 'Form1', 'txtBrokerNum', 'txtBrokerName')" />
+                                    &nbsp;<input type="button" id="cmdBroker_Setup" name="cmdBroker_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_ANNTY_BRK_DTL.aspx?optid=001&optd=Brokers_Agents_Details&popup=YES')" />
+                                    &nbsp;<input type="button" id="cmdBroker_Browse" name="cmdBroker_Browse" visible="false" value="Browse..." onclick="javascript: Sel_Func_Open('BRK', 'WebForm3.aspx?popup=YES', 'Form1', 'txtBrokerNum', 'txtBrokerName')" />
                                 </td>
                             </tr>
 
@@ -254,8 +254,8 @@ function cmdPfa_Browse_onclick() {
                                     <asp:TextBox ID="txtAgcyNum" AutoPostBack="true" MaxLength="10" runat="server" OnTextChanged="DoProc_Validate_Agency"></asp:TextBox>
                                     &nbsp;<asp:Label ID="lblAgcyName" Text="Full Name:" runat="server"></asp:Label>
                                     &nbsp;<asp:TextBox ID="txtAgcyName" Enabled="False" runat="server" Width="250px"></asp:TextBox>
-                                    &nbsp;<input type="button" id="cmdAgcy_Setup" name="cmdAgcy_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_LI_MKT_CD.aspx?optid=001&optd=Marketers_Agency&popup=YES')" />
-                                    &nbsp;<input type="button" id="cmdAgcy_Browse" name="cmdAgcy_Browse" value="Browse..." onclick="javascript: Sel_Func_Open('MKT', '../WebForm3.aspx?popup=YES', 'Form1', 'txtAgcyNum', 'txtAgcyName')" />
+                                    &nbsp;<input type="button" id="cmdAgcy_Setup" name="cmdAgcy_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_ANNTY_MKT_CD.aspx?optid=001&optd=Marketers_Agency&popup=YES')" />
+                                    &nbsp;<input type="button" id="cmdAgcy_Browse" name="cmdAgcy_Browse" value="Browse..." onclick="javascript: Sel_Func_Open('MKT', 'WebForm3.aspx?popup=YES', 'Form1', 'txtAgcyNum', 'txtAgcyName')" />
                                 </td>
                             </tr>
 
@@ -281,8 +281,8 @@ function cmdPfa_Browse_onclick() {
                                     <asp:TextBox ID="txtAssured_Num" AutoPostBack="true" MaxLength="10" runat="server" OnTextChanged="DoProc_Validate_Assured"></asp:TextBox>
                                     &nbsp;<asp:Label ID="lblAssuredName" Text="Full Name:" runat="server"></asp:Label>
                                     &nbsp;<asp:TextBox ID="txtAssured_Name" Enabled="False" runat="server" Width="250px"></asp:TextBox>
-                                    &nbsp;<input type="button" id="cmdAssured_Setup" name="cmdAssured_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('../I_LIFE/PRG_LI_CUST_DTL.aspx?optid=001&optd=Customer_Details&popup=YES')" />
-                                    &nbsp;<input type="button" id="cmdAssured_Browse" name="cmdAssured_Browse" value="Browse..." onclick="javascript: Sel_Func_Open('INS', '../WebForm3.aspx?popup=YES', 'Form1', 'txtAssured_Num', 'txtAssured_Name')" />
+                                    &nbsp;<input type="button" id="cmdAssured_Setup" name="cmdAssured_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_ANNTY_CUST_DTL.aspx?optid=001&optd=Customer_Details&popup=YES')" />
+                                    &nbsp;<input type="button" id="cmdAssured_Browse" name="cmdAssured_Browse" value="Browse..." onclick="javascript: Sel_Func_Open('INS', 'WebForm3.aspx?popup=YES', 'Form1', 'txtAssured_Num', 'txtAssured_Name')" />
                                 </td>
                             </tr>
 
@@ -293,7 +293,7 @@ function cmdPfa_Browse_onclick() {
                                     <asp:DropDownList ID="cboNationality" Width="220px" runat="server" OnTextChanged="DoProc_Nationality_Change"></asp:DropDownList>
                                     &nbsp;<asp:TextBox ID="txtNationality" Visible="false" MaxLength="4" Enabled="false" Width="40px" runat="server"></asp:TextBox>
                                     &nbsp;<asp:TextBox ID="txtNationalityName" Visible="false" Enabled="false" Width="40px" runat="server"></asp:TextBox>
-                                    &nbsp;<input type="button" id="cmdNationality_Setup" name="cmdNationality_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_LI_CODES.aspx?optid=001&optd=Nationality&popup=YES')" />
+                                    &nbsp;<input type="button" id="cmdNationality_Setup" name="cmdNationality_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_ANNTY_CODES.aspx?optid=001&optd=Nationality&popup=YES')" />
                                     &nbsp;&nbsp;<asp:Button ID="cmdNationality_Refresh" Text="Refresh" runat="server" OnClick="DoProc_Nationality_Refresh" />
                                 </td>
                             </tr>
@@ -305,7 +305,7 @@ function cmdPfa_Browse_onclick() {
                                     <asp:DropDownList ID="cboOccupationClass" Width="220px" runat="server" OnTextChanged="DoProc_OccupationClass_Change"></asp:DropDownList>
                                     &nbsp;<asp:TextBox ID="txtOccupationClass" Visible="false" MaxLength="4" Enabled="false" Width="40px" runat="server"></asp:TextBox>
                                     &nbsp;<asp:TextBox ID="txtOccupationClassName" Visible="false" Enabled="false" Width="40px" runat="server"></asp:TextBox>
-                                    &nbsp;<input type="button" id="cmdOccupationClass_Setup" name="cmdOccupationClass_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_LI_CODES.aspx?optid=007&optd=Occupation_Class&popup=YES')" />
+                                    &nbsp;<input type="button" id="cmdOccupationClass_Setup" name="cmdOccupationClass_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_ANNTY_CODES.aspx?optid=007&optd=Occupation_Class&popup=YES')" />
                                     &nbsp;&nbsp;<asp:Button ID="cmdOccupationClass_Refresh" Text="Refresh" runat="server" OnClick="DoProc_OccupationClass_Refresh" />
                                 </td>
                             </tr>
@@ -317,7 +317,7 @@ function cmdPfa_Browse_onclick() {
                                     <asp:DropDownList ID="cboOccupation" Width="220px" runat="server" OnTextChanged="DoProc_Occupation_Change"></asp:DropDownList>
                                     &nbsp;<asp:TextBox ID="txtOccupationNum" Visible="false" MaxLength="4" Enabled="false" Width="40px" runat="server"></asp:TextBox>
                                     &nbsp;<asp:TextBox ID="txtOccupationName" Visible="false" Enabled="false" Width="40px" runat="server"></asp:TextBox>
-                                    &nbsp;<input type="button" id="cmdOccupation_Setup" name="cmdOccupation_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_LI_CODES.aspx?optid=008&optd=Occupation&popup=YES')" />
+                                    &nbsp;<input type="button" id="cmdOccupation_Setup" name="cmdOccupation_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_ANNTY_CODES.aspx?optid=008&optd=Occupation&popup=YES')" />
                                     &nbsp;&nbsp;<asp:Button ID="cmdOccupation_Refresh" Text="Refresh" runat="server" OnClick="DoProc_Occupation_Refresh" />
                                 </td>
                             </tr>
@@ -427,7 +427,7 @@ function cmdPfa_Browse_onclick() {
                                     <asp:DropDownList ID="cboBranch" Width="220px" runat="server" OnTextChanged="DoProc_Branch_Change"></asp:DropDownList>
                                     &nbsp;<asp:TextBox ID="txtBraNum" Visible="false" Enabled="true" MaxLength="4" Width="40px" runat="server"></asp:TextBox>
                                     &nbsp;<asp:TextBox ID="txtBraName" Visible="false" Enabled="false" Width="40px" runat="server"></asp:TextBox>
-                                    &nbsp;<input type="button" id="cmdBranch_Setup" name="cmdBranch_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_LI_CODES.aspx?optid=003&optd=Branch&popup=YES')" />
+                                    &nbsp;<input type="button" id="cmdBranch_Setup" name="cmdBranch_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_ANNTY_CODES.aspx?optid=003&optd=Branch&popup=YES')" />
                                     &nbsp;&nbsp;<asp:Button ID="cmdBranch_Refresh" Text="Refresh" runat="server" OnClick="DoProc_Branch_Refresh" />
                                 </td>
                             </tr>
@@ -438,7 +438,7 @@ function cmdPfa_Browse_onclick() {
                                     <asp:DropDownList ID="cboDepartment" Width="220px" runat="server" OnTextChanged="DoProc_Dept_Change"></asp:DropDownList>
                                     &nbsp;<asp:TextBox ID="txtDeptNum" Visible="false" Enabled="true" MaxLength="4" runat="server" Width="40px"></asp:TextBox>
                                     &nbsp;<asp:TextBox ID="txtDeptName" Visible="false" Enabled="false" runat="server" Width="40px"></asp:TextBox>
-                                    &nbsp;<input type="button" id="cmdDept_Setup" name="cmdDept_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_LI_CODES.aspx?optid=005&optd=Department&popup=YES')" />
+                                    &nbsp;<input type="button" id="cmdDept_Setup" name="cmdDept_Setup" value="Setup" onclick="javascript: jsDoPopNew_Full('PRG_ANNTY_CODES.aspx?optid=005&optd=Department&popup=YES')" />
                                     &nbsp;&nbsp;<asp:Button ID="cmdDept_Refresh" Text="Refresh" runat="server" OnClick="DoProc_Dept_Refresh" />
                                 </td>
                             </tr>

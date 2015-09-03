@@ -124,7 +124,7 @@ Partial Class PRG_ANNUITY_POLY_PREM
                 oAL = Nothing
             End If
 
-            Call gnProc_Populate_Box("IL_RATE_TYPE_CODE_LIST", RTrim(Me.txtProduct_Num.Text), Me.cboPrem_Rate_Code)
+            Call gnProc_Populate_Box("AN_RATE_TYPE_CODE_LIST", RTrim(Me.txtProduct_Num.Text), Me.cboPrem_Rate_Code)
 
             If Trim(strF_ID) <> "" Then
                 strStatus = Proc_DoOpenRecord(RTrim("FIL"), Me.txtFileNum.Text, RTrim("0"))
@@ -185,7 +185,6 @@ Partial Class PRG_ANNUITY_POLY_PREM
                 End If
             End If
         End Try
-
     End Sub
 
     Protected Sub DoProc_Currency_Code_Change()
@@ -271,7 +270,7 @@ Partial Class PRG_ANNUITY_POLY_PREM
             myTerm = Me.txtPrem_Period_Yr.Text
             Select Case UCase(Me.txtProduct_Num.Text)
                 Case "A001"
-                    myTerm = "1"
+                    myTerm = "2"
                 Case "F001", "F002"
                     myTerm = "1"
             End Select
@@ -281,7 +280,7 @@ Partial Class PRG_ANNUITY_POLY_PREM
             'Response.Write("<BR/>Period: " & myTerm)
             'Response.Write("<BR/>Age: " & Me.txtDOB_ANB.Text)
 
-            myRetValue = MOD_GEN.gnGET_RATE("GET_IL_PREMIUM_RATE", "A", Me.txtPrem_Rate_Code.Text, Me.txtProduct_Num.Text, myTerm, Me.txtDOB_ANB.Text, Me.lblMsg, Me.txtPrem_Rate_Per)
+            myRetValue = MOD_GEN.gnGET_RATE("GET_AN_PREMIUM_RATE", "A", Me.txtPrem_Rate_Code.Text, Me.txtProduct_Num.Text, myTerm, Me.txtDOB_ANB.Text, Me.lblMsg, Me.txtPrem_Rate_Per)
             If Left(LTrim(myRetValue), 3) = "ERR" Then
                 Me.cboPrem_Rate_Code.SelectedIndex = -1
                 Me.txtPrem_Rate.Text = "0.00"
@@ -1005,7 +1004,7 @@ Partial Class PRG_ANNUITY_POLY_PREM
 
                         If txtPrem_Rate.Text <> "" Then
                             If IsNumeric(Trim(txtPrem_Rate.Text)) Then
-                                rate = CType(Trim(Me.txtPrem_Rate_Per.Text), Double)
+                                rate = CType(Trim(Me.txtPrem_Rate.Text), Double)
                             End If
                         Else
                             Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
@@ -1032,7 +1031,7 @@ Partial Class PRG_ANNUITY_POLY_PREM
                         End If
                         If cboPrem_Fixed_Rate_Per.SelectedIndex <> 0 Then
                             If IsNumeric(Trim(cboPrem_Fixed_Rate_Per.SelectedValue)) Then
-                                ratePer = CType(Trim(cboPrem_Fixed_Rate_Per.SelectedValue), Double)
+                                ratePer = CType(Trim(txtPrem_Rate_Per.text), Double)
                             End If
                         Else
                             Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
