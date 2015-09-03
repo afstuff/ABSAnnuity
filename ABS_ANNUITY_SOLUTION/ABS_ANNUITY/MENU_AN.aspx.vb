@@ -296,7 +296,7 @@ Partial Class MENU_AN
             BufferStr += "<td nowrap align='left' valign='top'>&nbsp;&nbsp;</td>"
         Else
             BufferStr += "<td nowrap align='left' valign='top' class='a_sub_menu'>&nbsp;"
-            BufferStr += "<img alt='Menu Image' src='../Images/ballred.gif' class='MY_IMG_LINK' />&nbsp;"
+            BufferStr += "<img alt='Menu Image' src='Images/ballred.gif' class='MY_IMG_LINK' />&nbsp;"
             BufferStr += LeadItem & "&nbsp;</td>"
         End If
 
@@ -310,7 +310,7 @@ Partial Class MENU_AN
             BufferStr += "</td>"
         Else
             BufferStr += "<td nowrap align='left' valign='top' class='td_sub_menu2'>"
-            BufferStr += "<img alt='Menu Image' src='../Images/ballredx.gif' class='MY_IMG_LINK' />&nbsp;"
+            BufferStr += "<img alt='Menu Image' src='Images/ballredx.gif' class='MY_IMG_LINK' />&nbsp;"
             BufferStr += "<a href=" & myURL & " valign='top' class='a_sub_menu2'>" & MenuItemText & "</a>"
             BufferStr += "</td>"
         End If
