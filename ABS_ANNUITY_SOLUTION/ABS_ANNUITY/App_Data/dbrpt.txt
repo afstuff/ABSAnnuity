@@ -1,1 +1,1 @@
-Data Source=abs-server;Initial Catalog=ABS_LIFE;User ID=CustodianUser;Password=Custodian@123;
+Data Source=abs-server;Initial Catalog=ABS_LIFE_STAGING;User ID=CustodianUser;Password=Custodian@123;
