@@ -33,6 +33,8 @@ Partial Class PRG_ANNUITY_POLY_BENEFRY
     Dim myarrData() As String
 
     Dim strErrMsg As String
+
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         strTableName = "TBIL_ANN_POLICY_BENEFRY"
 
