@@ -1,7 +1,9 @@
 ﻿Imports System.Data.OleDb
 Imports System.Data
-Partial Class PRG_ANNUITY_POLY_PREM
+
+Partial Class Annuity_PRG_ANNUITY_POLY_PREM
     Inherits System.Web.UI.Page
+
     Protected FirstMsg As String
     Protected PageLinks As String
 
@@ -53,6 +55,7 @@ Partial Class PRG_ANNUITY_POLY_PREM
     Dim dblTmp_Amt As Double = 0
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
         strTableName = "TBIL_ANN_POLICY_PREM_INFO"
 
         STRMENU_TITLE = "Proposal Screen"
@@ -161,13 +164,16 @@ Partial Class PRG_ANNUITY_POLY_PREM
             'Call Proc_DoDelete()
             Me.txtAction.Text = ""
         End If
+
     End Sub
 
     Protected Sub cmdSave_ASP_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdSave_ASP.Click
         'Call Proc_DoSave()
         Call Proc_DoSave1()
         Me.txtAction.Text = ""
+
     End Sub
+
     Private Sub DoGet_SelectedItem(ByVal pvDDL_Control As DropDownList, ByVal pvCtr_Value As TextBox, ByVal pvCtr_Text As TextBox, Optional ByVal pvCtr_Label As Label = Nothing)
         Try
             If pvDDL_Control.SelectedIndex = -1 Or pvDDL_Control.SelectedIndex = 0 Or _
@@ -2644,45 +2650,45 @@ Partial Class PRG_ANNUITY_POLY_PREM
             End If
 
             If IsNumeric(objOLEDR("TBIL_ANN_POL_PRM_SA_LC")) Then
-                txtPurchaseAnnuityLC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PRM_SA_LC"), Decimal), "N2")
-                txtPurchaseAnnuityFC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PRM_SA_FC"), Decimal), "N2")
+                txtPurchaseAnnuityLC.Text =Format(Ctype(objOLEDR("TBIL_ANN_POL_PRM_SA_LC"), Decimal), "N2")
+                txtPurchaseAnnuityFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PRM_SA_FC"), Decimal), "N2")
             End If
 
             If IsNumeric(objOLEDR("TBIL_ANN_POL_PURCHASE_LC")) Then
-                txtAnnualAnnuityLC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PURCHASE_LC"), Decimal), "N2")
-                txtAnnualAnnuityFC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PURCHASE_FC"), Decimal), "N2")
+                txtAnnualAnnuityLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PURCHASE_LC"), Decimal), "N2")
+                txtAnnualAnnuityFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PURCHASE_FC"), Decimal), "N2")
             End If
             If Not IsNumeric(CType(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_LC") & vbNullString, String)) Then
 
             Else
-                txtPremiumWithLumpSumLC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_LC"), Decimal), "N2")
-                txtPremiumWithLumpSumFC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_FC"), Decimal), "N2")
+                txtPremiumWithLumpSumLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_LC"), Decimal), "N2")
+                txtPremiumWithLumpSumFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_FC"), Decimal), "N2")
             End If
 
             If Not IsNumeric(CType(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_LC") & vbNullString, String)) Then
             Else
 
-                txtPremiumWithoutLumpSumLC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_LC"), Decimal), "N2")
-                txtPremiumWithoutLumpSumFC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_FC"), Decimal), "N2")
+                txtPremiumWithoutLumpSumLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_LC"), Decimal), "N2")
+                txtPremiumWithoutLumpSumFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_FC"), Decimal), "N2")
             End If
             If Not IsNumeric(CType(objOLEDR("TBIL_ANN_ANNUAL_LC") & vbNullString, String)) Then
             Else
 
-                txtAnnualAnnuityLC.Text = Format(CType(objOLEDR("TBIL_ANN_ANNUAL_LC"), Decimal), "N2")
-                txtAnnualAnnuityFC.Text = Format(CType(objOLEDR("TBIL_ANN_ANNUAL_FC"), Decimal), "N2")
+                txtAnnualAnnuityLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_ANNUAL_LC"), Decimal), "N2")
+                txtAnnualAnnuityFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_ANNUAL_FC"), Decimal), "N2")
             End If
             If Not IsNumeric(CType(objOLEDR("TBIL_ANN_MONTHLY_LC") & vbNullString, String)) Then
             Else
 
-                txtMonthlyAnnuityLC.Text = Format(CType(objOLEDR("TBIL_ANN_MONTHLY_LC"), Decimal), "N2")
-                txtMonthlyAnnuityFC.Text = Format(CType(objOLEDR("TBIL_ANN_MONTHLY_FC"), Decimal), "N2")
+                txtMonthlyAnnuityLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_MONTHLY_LC"), Decimal), "N2")
+                txtMonthlyAnnuityFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_MONTHLY_FC"), Decimal), "N2")
             End If
 
             Me.txtPrem_Fixed_Rate_PerNum.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RT_FIX_PER") & vbNullString, String))
             Call gnProc_DDL_Get(Me.cboPrem_Fixed_Rate_Per, RTrim(Me.txtPrem_Fixed_Rate_PerNum.Text))
-            txtProductClass.Text = RTrim(CType(objOLEDR("TBIL_ANN_PRDCT_DTL_CAT") & vbNullString, String))
-            txtProduct_Num.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_PRDCT_CD") & vbNullString, String))
-
+            txtProductClass.Text=RTrim(CType(objOLEDR("TBIL_ANN_PRDCT_DTL_CAT") & vbNullString, String))
+            txtProduct_Num.Text=RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_PRDCT_CD") & vbNullString, String))
+            
             Me.txtPrem_Rate_Code.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RATE_CD") & vbNullString, String))
             Call gnProc_DDL_Get(Me.cboPrem_Rate_Code, RTrim(Me.txtPrem_Rate_Code.Text))
             Me.txtPrem_Rate.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RATE") & vbNullString, String))
@@ -2753,6 +2759,7 @@ Partial Class PRG_ANNUITY_POLY_PREM
         pvURL = pvURL & "&optpolid=" & Trim(Me.txtPolNum.Text)
         pvURL = pvURL & "&optquotid=" & Trim(Me.txtQuote_Num.Text)
         Response.Redirect(pvURL)
+
     End Sub
 
     Protected Sub cmdNext_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdNext.Click
@@ -2765,7 +2772,9 @@ Partial Class PRG_ANNUITY_POLY_PREM
         pvURL = pvURL & "&optpolid=" & Trim(Me.txtPolNum.Text)
         pvURL = pvURL & "&optquotid=" & Trim(Me.txtQuote_Num.Text)
         Response.Redirect(pvURL)
+
     End Sub
+
 
     Protected Sub txtPurchaseAnnuityLC_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPurchaseAnnuityLC.TextChanged
         If txtPurchaseAnnuityLC.Text <> "" And txtPrem_Fixed_Rate.Text <> "" And cboPrem_Fixed_Rate_Per.SelectedIndex <> 0 Then
@@ -2792,4 +2801,6 @@ Partial Class PRG_ANNUITY_POLY_PREM
             Proc_DoCalc_Annuity()
         End If
     End Sub
+
+  
 End Class

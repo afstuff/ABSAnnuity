@@ -1,18 +1,18 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="PRG_ANNUITY_POLY_PREM.aspx.vb" Inherits="PRG_ANNUITY_POLY_PREM" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="PRG_ANNUITY_POLY_PREM.aspx.vb"
+    Inherits="Annuity_PRG_ANNUITY_POLY_PREM" %>
 
-<%@ Register Src="UC_BANT.ascx" TagName="UC_BANT" TagPrefix="uc1" %>
-<%@ Register Src="UC_FOOT.ascx" TagName="UC_FOOT" TagPrefix="uc2" %>
+<%@ Register Src="../UC_BANT.ascx" TagName="UC_BANT" TagPrefix="uc1" %>
+<%@ Register Src="../UC_FOOT.ascx" TagName="UC_FOOT" TagPrefix="uc2" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Annuity Module</title>
-    <link rel="Stylesheet" href="SS_ILIFE.css" type="text/css" />
+    <link rel="Stylesheet" href="../SS_ILIFE.css" type="text/css" />
 
-    <script language="javascript" type="text/javascript" src="Script/ScriptJS.js">
+    <script language="javascript" type="text/javascript" src="../Script/ScriptJS.js">
     </script>
 
-    <script language="javascript" type="text/javascript" src="Script/SJS_02.js">
+    <script language="javascript" type="text/javascript" src="../Script/SJS_02.js">
     </script>
 
 </head>
