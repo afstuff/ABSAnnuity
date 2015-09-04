@@ -535,33 +535,33 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
 
 
 
-            Select Case UCase(Me.txtProduct_Num.Text)
-                Case "F001", "F002"
-                    If Val(Me.txtPrem_Enrollee_Num.Text) = 0 Then
-                        Me.lblMsg.Text = "Missing " & Me.lblPrem_Enrollee_Num.Text
-                        FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                        Exit Sub
-                    End If
-                Case Else
-                    Me.txtPrem_Enrollee_Num.Text = "0"
-            End Select
+            'Select Case UCase(Me.txtProduct_Num.Text)
+            '    Case "F001", "F002"
+            '        If Val(Me.txtPrem_Enrollee_Num.Text) = 0 Then
+            '            Me.lblMsg.Text = "Missing " & Me.lblPrem_Enrollee_Num.Text
+            '            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
+            '            Exit Sub
+            '        End If
+            '    Case Else
+            '        Me.txtPrem_Enrollee_Num.Text = "0"
+            'End Select
 
-            Call gnGET_SelectedItem(Me.cboPrem_Allocation_YN, Me.txtPrem_Allocation_YN, Me.txtPrem_Allocation_YN_Name, Me.lblMsg)
-            If Me.txtPrem_Allocation_YN.Text = "" Then
-                'txtPrem_Allocation_YN.Text = "N"
-                Me.lblMsg.Text = "Missing " & Me.lblPrem_Allocation_YN.Text
-                FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                Exit Sub
-            End If
+            'Call gnGET_SelectedItem(Me.cboPrem_Allocation_YN, Me.txtPrem_Allocation_YN, Me.txtPrem_Allocation_YN_Name, Me.lblMsg)
+            'If Me.txtPrem_Allocation_YN.Text = "" Then
+            '    'txtPrem_Allocation_YN.Text = "N"
+            '    Me.lblMsg.Text = "Missing " & Me.lblPrem_Allocation_YN.Text
+            '    FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
+            '    Exit Sub
+            'End If
 
 
-            Call gnGET_SelectedItem(Me.cboPrem_Bonus_YN, Me.txtPrem_Bonus_YN, Me.txtPrem_Bonus_YN_Name, Me.lblMsg)
-            If Me.txtPrem_Bonus_YN.Text = "" Then
-                'txtPrem_Bonus_YN.Text = "N"
-                Me.lblMsg.Text = "Missing " & Me.lblPrem_Bonus_YN.Text
-                FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                Exit Sub
-            End If
+            'Call gnGET_SelectedItem(Me.cboPrem_Bonus_YN, Me.txtPrem_Bonus_YN, Me.txtPrem_Bonus_YN_Name, Me.lblMsg)
+            'If Me.txtPrem_Bonus_YN.Text = "" Then
+            '    'txtPrem_Bonus_YN.Text = "N"
+            '    Me.lblMsg.Text = "Missing " & Me.lblPrem_Bonus_YN.Text
+            '    FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
+            '    Exit Sub
+            'End If
 
             Call gnGET_SelectedItem(Me.cboPrem_Rate_Type, Me.txtPrem_Rate_TypeNum, Me.txtPrem_Rate_TypeName, Me.lblMsg)
             If Me.txtPrem_Rate_TypeNum.Text = "" Then
@@ -586,12 +586,12 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
 
         End If '        'VALIDATION for DATA NOT OLD END- first pass
 
-        Call gnGET_SelectedItem(Me.cboPrem_Life_Cover, Me.txtPrem_Life_CoverNum, Me.txtPrem_Life_CoverName, Me.lblMsg)
-        If Me.txtPrem_Life_CoverNum.Text = "" Then
-            Me.lblMsg.Text = "Missing " & Me.lblPrem_Life_Cover.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
+        'Call gnGET_SelectedItem(Me.cboPrem_Life_Cover, Me.txtPrem_Life_CoverNum, Me.txtPrem_Life_CoverName, Me.lblMsg)
+        'If Me.txtPrem_Life_CoverNum.Text = "" Then
+        '    Me.lblMsg.Text = "Missing " & Me.lblPrem_Life_Cover.Text
+        '    FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
+        '    Exit Sub
+        'End If
 
 
 
@@ -641,253 +641,207 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
         Dim intC As Integer = 0
 
 
-        Try
+        ' Try
 
-            objDA.Fill(obj_DT)
+        objDA.Fill(obj_DT)
 
-            If obj_DT.Rows.Count = 0 Then
-                '   Creating a new record
+        If obj_DT.Rows.Count = 0 Then
+            '   Creating a new record
 
-                Dim drNewRow As System.Data.DataRow
-                drNewRow = obj_DT.NewRow()
+            Dim drNewRow As System.Data.DataRow
+            drNewRow = obj_DT.NewRow()
 
-                drNewRow("TBIL_ANN_POL_PRM_MDLE") = RTrim("A")
+            drNewRow("TBIL_ANN_POL_PRM_MDLE") = RTrim("A")
+            drNewRow("TBIL_ANN_POL_PRM_FILE_NO") = RTrim(Me.txtFileNum.Text)
+            drNewRow("TBIL_ANN_POL_PRM_PROP_NO") = RTrim(Me.txtQuote_Num.Text)
+            drNewRow("TBIL_ANN_POL_PRM_POLY_NO") = RTrim(Me.txtPolNum.Text)
+            drNewRow("TBIL_ANN_POL_PRM_PRDCT_CD") = RTrim(Me.txtProduct_Num.Text)
+            drNewRow("TBIL_ANN_POL_PRM_PLAN_CD") = RTrim(Me.txtPlan_Num.Text)
+            drNewRow("TBIL_ANN_POLY_COVER_CD") = RTrim(Me.txtProduct_Num.Text)
+            drNewRow("TBIL_ANN_PRDCT_DTL_CAT") = RTrim(Me.txtProductClass.Text)
+            drNewRow("TBIL_ANN_POL_PRM_PERIOD_YRS") = Val(Trim(Me.txtPrem_Period_Yr.Text))
+            'drNewRow("TBIL_ANN_POL_PRM_RATE") = RTrim(Me.txtPrem_Rate.Text)
 
-                drNewRow("TBIL_ANN_POL_PRM_FILE_NO") = RTrim(Me.txtFileNum.Text)
-                drNewRow("TBIL_ANN_POL_PRM_PROP_NO") = RTrim(Me.txtQuote_Num.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_POLY_NO") = RTrim(Me.txtPolNum.Text)
-
-                drNewRow("TBIL_ANN_POL_PRM_PRDCT_CD") = RTrim(Me.txtProduct_Num.Text)
-                drNewRow("TBIL_ANN_POL_PRM_PLAN_CD") = RTrim(Me.txtPlan_Num.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_COVER_CD") = RTrim(Me.txtCover_Num.Text)
-
-                drNewRow("TBIL_ANN_POL_PRM_PERIOD_YRS") = Val(Trim(Me.txtPrem_Period_Yr.Text))
-
-                If Trim(Me.txtPrem_Start_Date.Text) <> "" Then
-                    drNewRow("TBIL_ANN_POL_PRM_FROM") = dteStart
-                End If
-                If Trim(Me.txtPrem_End_Date.Text) <> "" Then
-                    drNewRow("TBIL_ANN_POL_PRM_TO") = dteEnd
-                End If
-
-                drNewRow("TBIL_ANN_POL_PRM_MODE_PAYT") = RTrim(Me.txtPrem_MOP_Type.Text)
-                drNewRow("TBIL_ANN_POL_PRM_MOP_RATE") = RTrim(Me.txtPrem_MOP_Rate.Text)
-
-                drNewRow("TBIL_ANN_POL_PRM_CURRCY") = Trim(Me.txtPrem_SA_CurrencyCode.Text)
-                drNewRow("TBIL_ANN_POL_PRM_EXCHG_RATE") = RTrim(Me.txtPrem_Exchange_Rate.Text)
-
-                'drNewRow("TBIL_ANN_POL_PRM_ANN_CONTRIB_LC") = Trim(Me.txtAnnualAnnuityLC.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_ANN_CONTRIB_FC") = Trim(Me.txtAnnualAnnuityFC.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_MTH_CONTRIB_LC") = Trim(Me.txtMonthlyAnnuityLC.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_MTH_CONTRIB_FC") = Trim(Me.txtMonthlyAnnuityFC.Text)
-
-
-                'new fields
-                drNewRow("TBIL_ANN_POL_PURCHASE_LC") = Trim(txtPurchaseAnnuityLC.Text)
-                drNewRow("TBIL_ANN_POL_PURCHASE_FC") = Trim(txtPurchaseAnnuityFC.Text)
-                If IsNumeric(txtPremiumWithLumpSumLC.Text) Then
-                    drNewRow("TBIL_ANN_POL_PREM_WITH_LS_LC") = Trim(txtPremiumWithLumpSumLC.Text)
-                End If
-                If IsNumeric(txtPremiumWithLumpSumFC.Text) Then
-                    drNewRow("TBIL_ANN_POL_PREM_WITH_LS_FC") = Trim(txtPremiumWithLumpSumFC.Text)
-                End If
-                If IsNumeric(txtPremiumWithoutLumpSumLC.Text) Then
-                    drNewRow("TBIL_ANN_POL_PREM_WITHOUT_LS_LC") = Trim(txtPremiumWithoutLumpSumLC.Text)
-                End If
-                If IsNumeric(txtPremiumWithoutLumpSumFC.Text) Then
-                    drNewRow("TBIL_ANN_POL_PREM_WITHOUT_LS_FC") = Trim(txtPremiumWithoutLumpSumFC.Text)
-                End If
-                If IsNumeric(txtAnnualAnnuityLC.Text) Then
-                    drNewRow("TBIL_ANN_ANNUAL_LC") = Trim(txtAnnualAnnuityLC.Text)
-                End If
-                If IsNumeric(txtAnnualAnnuityFC.Text) Then
-                    drNewRow("TBIL_ANN_ANNUAL_FC") = Trim(txtAnnualAnnuityFC.Text)
-                End If
-                If IsNumeric(txtMonthlyAnnuityLC.Text) Then
-                    drNewRow("TBIL_ANN_MONTHLY_LC") = Trim(txtMonthlyAnnuityLC.Text)
-                End If
-                If IsNumeric(txtMonthlyAnnuityFC.Text) Then
-                    drNewRow("TBIL_ANN_MONTHLY_FC") = Trim(txtMonthlyAnnuityFC.Text)
-                End If
-
-
-
-                drNewRow("TBIL_ANN_POL_PRM_LIFE_COVER") = Trim(Me.txtPrem_Life_CoverNum.Text)
-                'drNewRow("TBIL_ANN_POL_SA_FROM_PRM") = Trim(Me.txtPrem_Is_SA_From_PremNum.Text)
-                drNewRow("TBIL_ANN_POL_PRM_RT_TAB_FIX") = Trim(Me.txtPrem_Rate_TypeNum.Text)
-                drNewRow("TBIL_ANN_POL_PRM_RT_FIXED") = Trim(Me.txtPrem_Fixed_Rate.Text)
-                drNewRow("TBIL_ANN_POL_PRM_RT_FIX_PER") = Trim(Me.txtPrem_Fixed_Rate_PerNum.Text)
-
-
-                'drNewRow("TBIL_ANN_POL_PRM_RT_APPLIED_ON") = Trim(Me.txtPrem_Rate_Applied_On.Text)
-
-                'new fields
-                drNewRow("TBIL_ANN_POL_PRM_RT_BONUS_CD") = Trim(Me.txtPrem_Bonus_YN.Text)
-                drNewRow("TBIL_ANN_POL_PRM_ALLOC_CD") = Trim(Me.txtPrem_Allocation_YN.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_SCH_TERM") = Trim(Me.txtPrem_School_Term.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_FEE_PRD") = Val(Me.txtPrem_Sch_Fee_Prd.Text)
-
-                drNewRow("TBIL_ANN_POL_PRM_DISCNT_PCENT") = RTrim(Me.txtPrem_Discount_Rate.Text)
-                drNewRow("TBIL_ANN_POL_PRM_LOAD_PCENT") = RTrim(Me.txtPrem_Loading_Rate.Text)
-                drNewRow("TBIL_ANN_POL_PRM_ENROL_NO") = Val(txtPrem_Enrollee_Num.Text)
-
-                'condition added by femi reason b'cos the value is empty but it expects decimal/numeric value
-                If RTrim(Me.txtPrem_Rate_Per.Text) <> "" Then
-                    drNewRow("TBIL_ANN_POL_PRM_RATE_PER") = RTrim(Me.txtPrem_Rate_Per.Text)
-                Else
-                    drNewRow("TBIL_ANN_POL_PRM_RATE_PER") = 0.0
-                End If
-
-                drNewRow("TBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE") = txtTBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE.Text
-                drNewRow("TBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR") = txtTBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR.Text
-
-
-                drNewRow("TBIL_ANN_POL_PRM_FLAG") = "A"
-                drNewRow("TBIL_ANN_POL_PRM_OPERID") = CType(myUserIDX, String)
-                drNewRow("TBIL_ANN_POL_PRM_KEYDTE") = Now
-
-                obj_DT.Rows.Add(drNewRow)
-                'obj_DT.AcceptChanges()
-                intC = objDA.Update(obj_DT)
-
-                drNewRow = Nothing
-
-                Me.lblMsg.Text = "New Record Saved to Database Successfully."
-
-            Else
-                '   Update existing record
-
-                'm_rwContact = m_dtContacts.Rows(0)
-                'm_rwContact("ContactName") = "Bob Brown"
-                'm_rwContact.AcceptChanges()
-                'm_dtContacts.AcceptChanges()
-                'Dim intC As Integer = m_daDataAdapter.Update(m_dtContacts)
-
-
-                With obj_DT
-                    .Rows(0)("TBIL_ANN_POL_PRM_FILE_NO") = RTrim(Me.txtFileNum.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_PROP_NO") = RTrim(Me.txtQuote_Num.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_POLY_NO") = RTrim(Me.txtPolNum.Text)
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_PRDCT_CD") = RTrim(Me.txtProduct_Num.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_PLAN_CD") = RTrim(Me.txtPlan_Num.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_COVER_CD") = RTrim(Me.txtCover_Num.Text)
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_PERIOD_YRS") = Val(Trim(Me.txtPrem_Period_Yr.Text))
-
-                    If Trim(Me.txtPrem_Start_Date.Text) <> "" Then
-                        .Rows(0)("TBIL_ANN_POL_PRM_FROM") = dteStart
-                    End If
-                    If Trim(Me.txtPrem_End_Date.Text) <> "" Then
-                        .Rows(0)("TBIL_ANN_POL_PRM_TO") = dteEnd
-                    End If
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_CURRCY") = Trim(Me.txtPrem_SA_CurrencyCode.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_MOP_RATE") = RTrim(Me.txtPrem_MOP_Rate.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_EXCHG_RATE") = RTrim(Me.txtPrem_Exchange_Rate.Text)
-
-                    '.Rows(0)("TBIL_ANN_POL_PRM_ANN_CONTRIB_LC") = Trim(Me.txtAnnualAnnuityLC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_ANN_CONTRIB_FC") = Trim(Me.txtAnnualAnnuityFC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_MTH_CONTRIB_LC") = Trim(Me.txtMonthlyAnnuityLC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_MTH_CONTRIB_FC") = Trim(Me.txtMonthlyAnnuityFC.Text)
-
-                    'new fields
-                    '.Rows(0)("TBIL_ANN_POL_PURCHASE_LC") = Trim(txtPurchaseAnnuityLC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PURCHASE_FC") = Trim(txtPurchaseAnnuityFC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PREM_WITH_LS_LC") = CType(Trim(txtPremiumWithLumpSumLC.Text), Decimal)
-                    '.Rows(0)("TBIL_ANN_POL_PREM_WITH_LS_FC") = Trim(txtPremiumWithLumpSumFC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PREM_WITHOUT_LS_LC") = Trim(txtPremiumWithoutLumpSumLC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PREM_WITHOUT_LS_FC") = Trim(txtPremiumWithoutLumpSumFC.Text)
-                    '.Rows(0)("TBIL_ANN_ANNUAL_LC") = Trim(txtAnnualAnnuityLC.Text)
-                    '.Rows(0)("TBIL_ANN_ANNUAL_FC") = Trim(txtAnnualAnnuityFC.Text)
-                    '.Rows(0)("TBIL_ANN_MONTHLY_LC") = Trim(txtMonthlyAnnuityLC.Text)
-                    '.Rows(0)("TBIL_ANN_MONTHLY_FC") = Trim(txtMonthlyAnnuityFC.Text)
-
-                    If IsNumeric(txtPremiumWithLumpSumLC.Text) Then
-                        .Rows(0)("TBIL_ANN_POL_PURCHASE_LC") = Trim(txtPurchaseAnnuityLC.Text)
-                    End If
-                    If IsNumeric(txtPremiumWithLumpSumLC.Text) Then
-                        .Rows(0)("TBIL_ANN_POL_PURCHASE_FC") = Trim(txtPurchaseAnnuityFC.Text)
-                    End If
-                    If IsNumeric(txtPremiumWithLumpSumLC.Text) Then
-                        .Rows(0)("TBIL_ANN_POL_PREM_WITH_LS_LC") = Trim(txtPremiumWithLumpSumLC.Text)
-                    End If
-                    If IsNumeric(txtPremiumWithLumpSumFC.Text) Then
-                        .Rows(0)("TBIL_ANN_POL_PREM_WITH_LS_FC") = Trim(txtPremiumWithLumpSumFC.Text)
-                    End If
-                    If IsNumeric(txtPremiumWithoutLumpSumLC.Text) Then
-                        .Rows(0)("TBIL_ANN_POL_PREM_WITHOUT_LS_LC") = Trim(txtPremiumWithoutLumpSumLC.Text)
-                    End If
-                    If IsNumeric(txtPremiumWithoutLumpSumFC.Text) Then
-                        .Rows(0)("TBIL_ANN_POL_PREM_WITHOUT_LS_FC") = Trim(txtPremiumWithoutLumpSumFC.Text)
-                    End If
-                    If IsNumeric(txtAnnualAnnuityLC.Text) Then
-                        .Rows(0)("TBIL_ANN_ANNUAL_LC") = Trim(txtAnnualAnnuityLC.Text)
-                    End If
-                    If IsNumeric(txtAnnualAnnuityFC.Text) Then
-                        .Rows(0)("TBIL_ANN_ANNUAL_FC") = Trim(txtAnnualAnnuityFC.Text)
-                    End If
-                    If IsNumeric(txtMonthlyAnnuityLC.Text) Then
-                        .Rows(0)("TBIL_ANN_MONTHLY_LC") = Trim(txtMonthlyAnnuityLC.Text)
-                    End If
-                    If IsNumeric(txtMonthlyAnnuityFC.Text) Then
-                        .Rows(0)("TBIL_ANN_MONTHLY_FC") = Trim(txtMonthlyAnnuityFC.Text)
-                    End If
-
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_LIFE_COVER") = Trim(Me.txtPrem_Life_CoverNum.Text)
-                    '.Rows(0)("TBIL_ANN_POL_SA_FROM_PRM") = Trim(Me.txtPrem_Is_SA_From_PremNum.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RT_TAB_FIX") = Trim(Me.txtPrem_Rate_TypeNum.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RT_FIXED") = Trim(Me.txtPrem_Fixed_Rate.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RT_FIX_PER") = Trim(Me.txtPrem_Fixed_Rate_PerNum.Text)
-
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_MODE_PAYT") = RTrim(Me.txtPrem_MOP_Type.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RATE_CD") = RTrim(Me.txtPrem_Rate_Code.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RATE") = RTrim(Me.txtPrem_Rate.Text)
-
-                    'condition added by femi reason b'cos the value is empty but it expects decimal/numeric value
-                    If RTrim(Me.txtPrem_Rate_Per.Text) <> "" Then
-                        .Rows(0)("TBIL_ANN_POL_PRM_RATE_PER") = RTrim(Me.txtPrem_Rate_Per.Text)
-                    Else
-                        .Rows(0)("TBIL_ANN_POL_PRM_RATE_PER") = 0.0
-                    End If
-
-
-                    '.Rows(0)("TBIL_ANN_POL_PRM_NO_INSTAL") = RTrim(Me.txtPrem_No_Instal.Text)
-
-                    '.Rows(0)("TBIL_ANN_POL_PRM_RT_APPLIED_ON") = Trim(Me.txtPrem_Rate_Applied_On.Text)
-
-                    'new fields
-                    .Rows(0)("TBIL_ANN_POL_PRM_RT_BONUS_CD") = Trim(Me.txtPrem_Bonus_YN.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_ALLOC_CD") = Trim(Me.txtPrem_Allocation_YN.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_SCH_TERM") = Trim(Me.txtPrem_School_Term.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_FEE_PRD") = Val(Me.txtPrem_Sch_Fee_Prd.Text)
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_DISCNT_PCENT") = RTrim(Me.txtPrem_Discount_Rate.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_LOAD_PCENT") = RTrim(Me.txtPrem_Loading_Rate.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_ENROL_NO") = Val(txtPrem_Enrollee_Num.Text)
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE") = Trim(txtTBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR") = Trim(txtTBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR.Text)
-
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_FLAG") = "C"
-                    '.Rows(0)("TBIL_ANN_POL_PRM_OPERID") = CType(myUserIDX, String)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_KEYDTE") = Now
-                End With
-
-                'obj_DT.AcceptChanges()
-                intC = objDA.Update(obj_DT)
-
-                Me.lblMsg.Text = "Record Saved to Database Successfully."
-
+            If Trim(Me.txtPrem_Start_Date.Text) <> "" Then
+                drNewRow("TBIL_ANN_POL_PRM_FROM") = dteStart
+            End If
+            If Trim(Me.txtPrem_End_Date.Text) <> "" Then
+                drNewRow("TBIL_ANN_POL_PRM_TO") = dteEnd
             End If
 
-        Catch ex As Exception
-            Me.lblMsg.Text = ex.Message.ToString
-            Exit Sub
-        End Try
+            drNewRow("TBIL_ANN_POL_PRM_MODE_PAYT") = RTrim(Me.txtPrem_MOP_Type.Text)
+            'drNewRow("TBIL_ANN_POL_PRM_MOP_RATE") = RTrim(Me.txtPrem_MOP_Rate.Text)
+            drNewRow("TBIL_ANN_POL_PRM_CURRCY") = Trim(Me.txtPrem_SA_CurrencyCode.Text)
+            drNewRow("TBIL_ANN_POL_PRM_EXCHG_RATE") = RTrim(Me.txtPrem_Exchange_Rate.Text)
+
+            'new fields
+            'drNewRow("TBIL_ANN_POL_PURCHASE_LC") = Trim(txtPurchaseAnnuityLC.Text)
+            'drNewRow("TBIL_ANN_POL_PURCHASE_FC") = Trim(txtPurchaseAnnuityFC.Text)
+
+            If IsNumeric(txtPurchaseAnnuityLC.Text) Then
+                drNewRow("TBIL_ANN_POL_PURCHASE_LC") = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
+            End If
+            If IsNumeric(txtPurchaseAnnuityFC.Text) Then
+                drNewRow("TBIL_ANN_POL_PURCHASE_FC") = CType(Trim(txtPurchaseAnnuityFC.Text), Double)
+            End If
+            If IsNumeric(txtPremiumWithLumpSumLC.Text) Then
+                drNewRow("TBIL_ANN_POL_PREM_WITH_LS_LC") = CType(Trim(txtPremiumWithLumpSumLC.Text), Double)
+            End If
+            If IsNumeric(txtPremiumWithLumpSumFC.Text) Then
+                drNewRow("TBIL_ANN_POL_PREM_WITH_LS_FC") = CType(Trim(txtPremiumWithLumpSumFC.Text), Double)
+            End If
+            If IsNumeric(txtPremiumWithoutLumpSumLC.Text) Then
+                drNewRow("TBIL_ANN_POL_PREM_WITHOUT_LS_LC") = CType(Trim(txtPremiumWithoutLumpSumLC.Text), Double)
+            End If
+            If IsNumeric(txtPremiumWithoutLumpSumFC.Text) Then
+                drNewRow("TBIL_ANN_POL_PREM_WITHOUT_LS_FC") = CType(Trim(txtPremiumWithoutLumpSumFC.Text), Double)
+            End If
+            If IsNumeric(txtAnnualAnnuityLC.Text) Then
+                drNewRow("TBIL_ANN_ANNUAL_LC") = CType(Trim(txtAnnualAnnuityLC.Text), Double)
+            End If
+            If IsNumeric(txtAnnualAnnuityFC.Text) Then
+                drNewRow("TBIL_ANN_ANNUAL_FC") = CType(Trim(txtAnnualAnnuityFC.Text), Double)
+            End If
+            If IsNumeric(txtMonthlyAnnuityLC.Text) Then
+                drNewRow("TBIL_ANN_MONTHLY_LC") = CType(Trim(txtMonthlyAnnuityLC.Text), Double)
+            End If
+            If IsNumeric(txtMonthlyAnnuityFC.Text) Then
+                drNewRow("TBIL_ANN_MONTHLY_FC") = CType(Trim(txtMonthlyAnnuityFC.Text), Double)
+            End If
+
+            drNewRow("TBIL_ANN_POL_PRM_RT_TAB_FIX") = Trim(Me.txtPrem_Rate_TypeNum.Text)
+            drNewRow("TBIL_ANN_POL_PRM_RT_FIXED") = Trim(Me.txtPrem_Fixed_Rate.Text)
+            If Trim(Me.txtPrem_Rate_TypeNum.Text) = "T" Then
+                drNewRow("TBIL_ANN_POL_PRM_RT_FIX_PER") = 0.0
+            Else
+                drNewRow("TBIL_ANN_POL_PRM_RT_FIX_PER") = CType(Trim(Me.txtPrem_Fixed_Rate_PerNum.Text), Double)
+            End If
+
+
+            'condition added by femi reason b'cos the value is empty but it expects double/numeric value
+            If RTrim(Me.txtPrem_Rate_Per.Text) <> "" Then
+                drNewRow("TBIL_ANN_POL_PRM_RATE_PER") = RTrim(Me.txtPrem_Rate_Per.Text)
+            Else
+                drNewRow("TBIL_ANN_POL_PRM_RATE_PER") = 0.0
+            End If
+
+            drNewRow("TBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE") = txtTBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE.Text
+            drNewRow("TBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR") = txtTBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR.Text
+
+
+            drNewRow("TBIL_ANN_POL_PRM_FLAG") = "A"
+            drNewRow("TBIL_ANN_POL_PRM_OPERID") = CType(myUserIDX, String)
+            drNewRow("TBIL_ANN_POL_PRM_KEYDTE") = Now
+
+            obj_DT.Rows.Add(drNewRow)
+            'obj_DT.AcceptChanges()
+            intC = objDA.Update(obj_DT)
+
+            drNewRow = Nothing
+
+            Me.lblMsg.Text = "New Record Saved to Database Successfully."
+
+        Else
+            '   Update existing record
+            With obj_DT
+                '.Rows(0)("TBIL_ANN_POL_PRM_FILE_NO") = RTrim(Me.txtFileNum.Text)
+
+
+                .Rows(0)("TBIL_ANN_POL_PRM_MDLE") = RTrim("A")
+                .Rows(0)("TBIL_ANN_POL_PRM_FILE_NO") = RTrim(Me.txtFileNum.Text)
+                .Rows(0)("TBIL_ANN_POL_PRM_PROP_NO") = RTrim(Me.txtQuote_Num.Text)
+                .Rows(0)("TBIL_ANN_POL_PRM_POLY_NO") = RTrim(Me.txtPolNum.Text)
+                .Rows(0)("TBIL_ANN_POL_PRM_PRDCT_CD") = RTrim(Me.txtProduct_Num.Text)
+                .Rows(0)("TBIL_ANN_POL_PRM_PLAN_CD") = RTrim(Me.txtPlan_Num.Text)
+                .Rows(0)("TBIL_ANN_POLY_COVER_CD") = RTrim(Me.txtProduct_Num.Text)
+                .Rows(0)("TBIL_ANN_PRDCT_DTL_CAT") = RTrim(Me.txtProductClass.Text)
+                .Rows(0)("TBIL_ANN_POL_PRM_PERIOD_YRS") = Val(Trim(Me.txtPrem_Period_Yr.Text))
+                '.Rows(0)("TBIL_ANN_POL_PRM_RATE") = RTrim(Me.txtPrem_Rate.Text)
+
+                If Trim(Me.txtPrem_Start_Date.Text) <> "" Then
+                    .Rows(0)("TBIL_ANN_POL_PRM_FROM") = dteStart
+                End If
+                If Trim(Me.txtPrem_End_Date.Text) <> "" Then
+                    .Rows(0)("TBIL_ANN_POL_PRM_TO") = dteEnd
+                End If
+
+                .Rows(0)("TBIL_ANN_POL_PRM_MODE_PAYT") = RTrim(Me.txtPrem_MOP_Type.Text)
+                '.Rows(0)("TBIL_ANN_POL_PRM_MOP_RATE") = RTrim(Me.txtPrem_MOP_Rate.Text)
+                .Rows(0)("TBIL_ANN_POL_PRM_CURRCY") = Trim(Me.txtPrem_SA_CurrencyCode.Text)
+                .Rows(0)("TBIL_ANN_POL_PRM_EXCHG_RATE") = RTrim(Me.txtPrem_Exchange_Rate.Text)
+
+                'new fields
+                '.Rows(0)("TBIL_ANN_POL_PURCHASE_LC") = Trim(txtPurchaseAnnuityLC.Text)
+                '.Rows(0)("TBIL_ANN_POL_PURCHASE_FC") = Trim(txtPurchaseAnnuityFC.Text)
+
+                If IsNumeric(txtPurchaseAnnuityLC.Text) Then
+                    .Rows(0)("TBIL_ANN_POL_PURCHASE_LC") = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
+                End If
+                If IsNumeric(txtPurchaseAnnuityFC.Text) Then
+                    .Rows(0)("TBIL_ANN_POL_PURCHASE_FC") = CType(Trim(txtPurchaseAnnuityFC.Text), Double)
+                End If
+                If IsNumeric(txtPremiumWithLumpSumLC.Text) Then
+                    .Rows(0)("TBIL_ANN_POL_PREM_WITH_LS_LC") = CType(Trim(txtPremiumWithLumpSumLC.Text), Double)
+                End If
+                If IsNumeric(txtPremiumWithLumpSumFC.Text) Then
+                    .Rows(0)("TBIL_ANN_POL_PREM_WITH_LS_FC") = CType(Trim(txtPremiumWithLumpSumFC.Text), Double)
+                End If
+                If IsNumeric(txtPremiumWithoutLumpSumLC.Text) Then
+                    .Rows(0)("TBIL_ANN_POL_PREM_WITHOUT_LS_LC") = CType(Trim(txtPremiumWithoutLumpSumLC.Text), Double)
+                End If
+                If IsNumeric(txtPremiumWithoutLumpSumFC.Text) Then
+                    .Rows(0)("TBIL_ANN_POL_PREM_WITHOUT_LS_FC") = CType(Trim(txtPremiumWithoutLumpSumFC.Text), Double)
+                End If
+                If IsNumeric(txtAnnualAnnuityLC.Text) Then
+                    .Rows(0)("TBIL_ANN_ANNUAL_LC") = CType(Trim(txtAnnualAnnuityLC.Text), Double)
+                End If
+                If IsNumeric(txtAnnualAnnuityFC.Text) Then
+                    .Rows(0)("TBIL_ANN_ANNUAL_FC") = CType(Trim(txtAnnualAnnuityFC.Text), Double)
+                End If
+                If IsNumeric(txtMonthlyAnnuityLC.Text) Then
+                    .Rows(0)("TBIL_ANN_MONTHLY_LC") = CType(Trim(txtMonthlyAnnuityLC.Text), Double)
+                End If
+                If IsNumeric(txtMonthlyAnnuityFC.Text) Then
+                    .Rows(0)("TBIL_ANN_MONTHLY_FC") = CType(Trim(txtMonthlyAnnuityFC.Text), Double)
+                End If
+
+                .Rows(0)("TBIL_ANN_POL_PRM_RT_TAB_FIX") = Trim(Me.txtPrem_Rate_TypeNum.Text)
+                .Rows(0)("TBIL_ANN_POL_PRM_RT_FIXED") = Trim(Me.txtPrem_Fixed_Rate.Text)
+                If Trim(Me.txtPrem_Rate_TypeNum.Text) = "T" Then
+                    .Rows(0)("TBIL_ANN_POL_PRM_RT_FIX_PER") = 0.0
+                Else
+                    .Rows(0)("TBIL_ANN_POL_PRM_RT_FIX_PER") = CType(Trim(Me.txtPrem_Fixed_Rate_PerNum.Text), Double)
+                End If
+
+
+                'condition added by femi reason b'cos the value is empty but it expects double/numeric value
+                If RTrim(Me.txtPrem_Rate_Per.Text) <> "" Then
+                    .Rows(0)("TBIL_ANN_POL_PRM_RATE_PER") = RTrim(Me.txtPrem_Rate_Per.Text)
+                Else
+                    .Rows(0)("TBIL_ANN_POL_PRM_RATE_PER") = 0.0
+                End If
+
+                .Rows(0)("TBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE") = txtTBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE.Text
+                .Rows(0)("TBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR") = txtTBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR.Text
+
+
+                .Rows(0)("TBIL_ANN_POL_PRM_FLAG") = "C"
+                '.Rows(0)("TBIL_ANN_POL_PRM_OPERID") = CType(myUserIDX, String)
+                '.Rows(0)("TBIL_ANN_POL_PRM_KEYDTE") = Now
+
+            End With
+
+            'obj_DT.AcceptChanges()
+            intC = objDA.Update(obj_DT)
+
+            Me.lblMsg.Text = "Record Saved to Database Successfully."
+
+        End If
+
+        'Catch ex As Exception
+        '    Me.lblMsg.Text = ex.Message.ToString
+        '    Exit Sub
+        'End Try
 
         obj_DT.Dispose()
         obj_DT = Nothing
@@ -951,7 +905,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
 
                 dblTmp_Amt = 0
 
-                Select Case UCase(Trim(txtPrem_Rate_TypeNum.text))
+                Select Case UCase(Trim(txtPrem_Rate_TypeNum.Text))
                     Case "N"
                         'this is to call a NO_RATE method on ANNUITY
 
@@ -972,7 +926,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                                 purchaseAmount = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
                             End If
                         Else
-                            Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
+                            Me.lblMsg.Text = "Missing - " & Me.lblPrem_Start_Date.Text
                             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
                             Exit Sub
                         End If
@@ -981,7 +935,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                                 purchaseAmount = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
                             End If
                         Else
-                            Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
+                            Me.lblMsg.Text = "Missing  - " & Me.lblPrem_Start_Date.Text
                             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
                             Exit Sub
                         End If
@@ -990,7 +944,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                                 ratePer = CType(Trim(cboPrem_Fixed_Rate_Per.SelectedValue), Double)
                             End If
                         Else
-                            Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
+                            Me.lblMsg.Text = "Missing  - " & Me.lblPrem_Start_Date.Text
                             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
                             Exit Sub
                         End If
@@ -1011,44 +965,23 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                         If txtPrem_Rate.Text <> "" Then
                             If IsNumeric(Trim(txtPrem_Rate.Text)) Then
                                 rate = CType(Trim(Me.txtPrem_Rate.Text), Double)
-                            End If
-                        Else
-                            Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
-                            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                            Exit Sub
-                        End If
-                        If txtPurchaseAnnuityLC.Text <> "" Then
-                            If IsNumeric(Trim(txtPurchaseAnnuityLC.Text)) Then
+                                ratePer = CType(Trim(Me.txtPrem_Rate_Per.Text), Double)
                                 purchaseAmount = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
                             End If
                         Else
-                            Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
+                            Me.lblMsg.Text = "Missing Prem. Table Rate "
                             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
                             Exit Sub
                         End If
-                        If txtPurchaseAnnuityLC.Text <> "" Then
-                            If IsNumeric(Trim(txtPurchaseAnnuityLC.Text)) Then
-                                purchaseAmount = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
-                            End If
-                        Else
-                            Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
-                            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                            Exit Sub
-                        End If
-                        If cboPrem_Fixed_Rate_Per.SelectedIndex <> 0 Then
-                            If IsNumeric(Trim(cboPrem_Fixed_Rate_Per.SelectedValue)) Then
-                                ratePer = CType(Trim(txtPrem_Rate_Per.text), Double)
-                            End If
-                        Else
-                            Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
-                            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                            Exit Sub
-                        End If
+
+
                         annualAnnuity = (purchaseAmount * rate) / ratePer
                         monthlyAnnuity = annualAnnuity / 12
 
                         txtAnnualAnnuityLC.Text = Format(CType(annualAnnuity, Decimal), "N2")
                         txtAnnualAnnuityFC.Text = Format(CType(annualAnnuity, Decimal), "N2")
+
+
                         'Format(CType(dr("TBIL_CLM_PAID_SA_AMT_LC"), Decimal), "N2")
                         txtMonthlyAnnuityLC.Text = Format(CType(monthlyAnnuity, Decimal), "N2")
                         txtMonthlyAnnuityFC.Text = Format(CType(monthlyAnnuity, Decimal), "N2")
@@ -1069,1157 +1002,6 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
 
 
     End Sub
-
-    Private Sub Proc_DoSave()
-
-        'New fields
-        'TBIL_ANN_POL_PRM_LIFE_COVER                     Is  there Life Cover   Y/N     (Char 3)
-        'TBIL_ANN_POL_SA_FROM_PRM                         Is SA Calculated from Premium Y/N     (Char 3)
-        'TBIL_ANN_POL_PRM_RT_TAB_FIX		 Premium rate -  F – Fixed rate  T  - Table rate (Char 5)
-        'TBIL_ANN_POL_PRM_RT_FIXED		Fixed Rate to use (Numeric 4 decimal)
-        'TBIL_ANN_POL_PRM_RT+FIX_PER		Fixed rate Per (100, 1000)   (Numeric no decimal)
-
-        Dim strMyYear As String = ""
-        Dim strMyMth As String = ""
-        Dim strMyDay As String = ""
-
-        Dim strMyDte As String = ""
-        Dim strMyDteX As String = ""
-
-        Dim dteStart As Date = Now
-        Dim dteEnd As Date = Now
-
-        Dim dteStart_RW As Date = Now
-        Dim dteEnd_RW As Date = Now
-
-        Dim mydteX As String = ""
-        Dim mydte As Date = Now
-
-        Dim dteDOB As Date = Now
-
-        Dim lngDOB_ANB As Integer = 0
-        Dim Dte_Proposal As Date = Now
-        Dim Dte_Commence As Date = Now
-        Dim Dte_DOB As Date = Now
-        Dim Dte_Maturity As Date = Now
-
-        Dim myTmp_RecStatus = CType(Session("myTmp_RecStatus"), String)
-
-        Me.lblMsg.Text = ""
-
-        If Me.txtFileNum.Text = "" Then
-            Me.lblMsg.Text = "Missing " & Me.lblFileNum.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-
-        If Me.txtQuote_Num.Text = "" Then
-            Me.lblMsg.Text = "Missing " & Me.lblQuote_Num.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-
-        'added by femi
-        If txtTBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE.Text <> "" Then
-            If Not IsNumeric(txtTBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE.Text) Then
-                Me.lblMsg.Text = "Missing or invalid " & Me.lblPrem_MOP_Type0.Text
-                FirstMsg = "Javascript:alert('" & Me.lblPrem_MOP_Type0.Text & "')"
-                Exit Sub
-            Else
-
-            End If
-        Else
-            Me.lblMsg.Text = "Missing " & Me.lblPrem_MOP_Type0.Text
-            FirstMsg = "Javascript:alert('" & Me.lblPrem_MOP_Type0.Text & "')"
-        End If
-
-        'added by femi
-        If txtTBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR.Text <> "" Then
-            If Not IsNumeric(txtTBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR.Text) Then
-                Me.lblMsg.Text = "Missing or invalid " & Me.lblPrem_End_Date0.Text
-                FirstMsg = "Javascript:alert('" & Me.lblPrem_End_Date0.Text & "')"
-                Exit Sub
-            Else
-
-            End If
-        Else
-            Me.lblMsg.Text = "Missing " & Me.lblPrem_End_Date0.Text
-            FirstMsg = "Javascript:alert('" & Me.lblPrem_End_Date0.Text & "')"
-        End If
-
-        'If Me.txtPolNum.Text = "" Then
-        '    Me.lblMsg.Text = "Missing " & Me.lblPolNum.Text
-        '    FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-        '    Exit Sub
-        'End If
-
-        If Me.txtProductClass.Text = "" Then
-            Me.lblMsg.Text = "Missing " & Me.lblProduct.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-
-        If Me.txtProduct_Num.Text = "" Then
-            Me.lblMsg.Text = "Missing " & Me.lblProduct.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-
-
-        Me.txtPrem_Period_Yr.Text = Trim(Me.txtPrem_Period_Yr.Text)
-        If Me.txtPrem_Period_Yr.Text = "" Then
-            Me.lblMsg.Text = "Missing " & Me.lblPrem_Period_Yr.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-        If Not IsNumeric(Me.txtPrem_Period_Yr.Text) Then
-            Me.lblMsg.Text = "Invalid " & Me.lblPrem_Period_Yr.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-
-        'Validate date
-        myarrData = Split(Me.txtPrem_Start_Date.Text, "/")
-        If myarrData.Count <> 3 Then
-            Me.lblMsg.Text = "Missing or Invalid " & Me.lblPrem_Start_Date.Text & ". Expecting full date in ddmmyyyy format ..."
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-        strMyDay = myarrData(0)
-        strMyMth = myarrData(1)
-        strMyYear = myarrData(2)
-
-        strMyDay = CType(Format(Val(strMyDay), "00"), String)
-        strMyMth = CType(Format(Val(strMyMth), "00"), String)
-        strMyYear = CType(Format(Val(strMyYear), "0000"), String)
-
-        strMyDte = Trim(strMyDay) & "/" & Trim(strMyMth) & "/" & Trim(strMyYear)
-        Me.txtPrem_Start_Date.Text = Trim(strMyDte)
-
-        If RTrim(Me.txtPrem_Start_Date.Text) = "" Or Len(Trim(Me.txtPrem_Start_Date.Text)) <> 10 Then
-            Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-
-        'Validate date
-        myarrData = Split(Me.txtPrem_Start_Date.Text, "/")
-        If myarrData.Count <> 3 Then
-            Me.lblMsg.Text = "Missing or Invalid " & Me.lblPrem_Start_Date.Text & ". Expecting full date in ddmmyyyy format ..."
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-        strMyDay = myarrData(0)
-        strMyMth = myarrData(1)
-        strMyYear = myarrData(2)
-
-        strMyDay = CType(Format(Val(strMyDay), "00"), String)
-        strMyMth = CType(Format(Val(strMyMth), "00"), String)
-        strMyYear = CType(Format(Val(strMyYear), "0000"), String)
-
-        strMyDte = Trim(strMyDay) & "/" & Trim(strMyMth) & "/" & Trim(strMyYear)
-
-        blnStatusX = MOD_GEN.gnTest_TransDate(strMyDte)
-        If blnStatusX = False Then
-            Me.lblMsg.Text = "Please enter valid date..."
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "');"
-            Exit Sub
-        End If
-        Me.txtPrem_Start_Date.Text = RTrim(strMyDte)
-        'mydteX = Mid(Me.txtStartDate.Text, 4, 2) & "/" & Left(Me.txtStartDate.Text, 2) & "/" & Right(Me.txtStartDate.Text, 4)
-        mydteX = Trim(strMyMth) & "/" & Trim(strMyDay) & "/" & Trim(strMyYear)
-        mydte = Format(CDate(mydteX), "MM/dd/yyyy")
-        dteStart = Format(mydte, "MM/dd/yyyy")
-
-        dteEnd = DateAdd(DateInterval.Year, Val(Me.txtPrem_Period_Yr.Text), dteStart)
-        Me.txtPrem_End_Date.Text = Format(dteEnd, "dd/MM/yyyy")
-
-        'VALIDATION for DATA NOT OLD START - first pass
-        If myTmp_RecStatus <> "OLD" Then
-            'Call gnGET_SelectedItem(Me.cboPrem_MOP_Type, Me.txtPrem_MOP_Type, Me.txtPrem_MOP_TypeName, Me.lblMsg)
-            Call DoProc_MOP_Change()
-            If Me.txtPrem_MOP_Type.Text = "" Then
-                Me.lblMsg.Text = "Missing " & Me.lblPrem_MOP_Type.Text
-                FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                Exit Sub
-            End If
-
-            If Trim(Me.txtPrem_Start_Date.Text) <> "" Then
-                Call DoProc_Currency_Code_Change()
-            End If
-
-
-            Call MOD_GEN.gnInitialize_Numeric(Me.txtPrem_MOP_Rate)
-            Call MOD_GEN.gnInitialize_Numeric(Me.txtPrem_Exchange_Rate)
-
-
-
-            Select Case UCase(Me.txtProduct_Num.Text)
-                Case "F001", "F002"
-                    If Val(Me.txtPrem_Enrollee_Num.Text) = 0 Then
-                        Me.lblMsg.Text = "Missing " & Me.lblPrem_Enrollee_Num.Text
-                        FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                        Exit Sub
-                    End If
-                Case Else
-                    Me.txtPrem_Enrollee_Num.Text = "0"
-            End Select
-
-            Call gnGET_SelectedItem(Me.cboPrem_Allocation_YN, Me.txtPrem_Allocation_YN, Me.txtPrem_Allocation_YN_Name, Me.lblMsg)
-            If Me.txtPrem_Allocation_YN.Text = "" Then
-                'txtPrem_Allocation_YN.Text = "N"
-                Me.lblMsg.Text = "Missing " & Me.lblPrem_Allocation_YN.Text
-                FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                Exit Sub
-            End If
-
-
-            Call gnGET_SelectedItem(Me.cboPrem_Bonus_YN, Me.txtPrem_Bonus_YN, Me.txtPrem_Bonus_YN_Name, Me.lblMsg)
-            If Me.txtPrem_Bonus_YN.Text = "" Then
-                'txtPrem_Bonus_YN.Text = "N"
-                Me.lblMsg.Text = "Missing " & Me.lblPrem_Bonus_YN.Text
-                FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                Exit Sub
-            End If
-
-            Call gnGET_SelectedItem(Me.cboPrem_Rate_Type, Me.txtPrem_Rate_TypeNum, Me.txtPrem_Rate_TypeName, Me.lblMsg)
-            If Me.txtPrem_Rate_TypeNum.Text = "" Then
-                Me.lblMsg.Text = "Missing " & Me.lblPrem_Rate_Type.Text
-                FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                Exit Sub
-            End If
-
-            If Trim(Me.txtPrem_Rate_TypeNum.Text) = "N" Then
-                Me.txtPrem_Fixed_Rate.Text = "0"
-                Me.txtPrem_Fixed_Rate_PerNum.Text = "1000"
-                Me.txtPrem_Rate.Text = "0"
-                Me.txtPrem_Rate_Per.Text = "1000"
-            End If
-
-            If Trim(Me.txtPrem_Rate_TypeNum.Text) = "T" Then
-                Me.txtPrem_Fixed_Rate.Text = "0.00"
-                Me.txtPrem_Fixed_Rate_PerNum.Text = "1000"
-            End If
-            Call MOD_GEN.gnInitialize_Numeric(Me.txtPrem_Fixed_Rate)
-            If Trim(Me.txtPrem_Rate_TypeNum.Text) = "F" And Val(Me.txtPrem_Fixed_Rate.Text) = 0 Then
-                Me.lblMsg.Text = "Missing Fixed Rate. Please enter valid fixed rate..."
-                FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                Exit Sub
-            End If
-
-            Call gnGET_SelectedItem(Me.cboPrem_Fixed_Rate_Per, Me.txtPrem_Fixed_Rate_PerNum, Me.txtPrem_Fixed_Rate_PerName, Me.lblMsg)
-            If Trim(Me.txtPrem_Rate_TypeNum.Text) = "F" And Val(Me.txtPrem_Fixed_Rate_PerNum.Text) = 0 Then
-                Me.lblMsg.Text = "Missing " & Me.lblPrem_Fixed_Rate_Per.Text
-                FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                Exit Sub
-            End If
-
-        End If '        'VALIDATION for DATA NOT OLD END- first pass
-
-        Call gnGET_SelectedItem(Me.cboPrem_Life_Cover, Me.txtPrem_Life_CoverNum, Me.txtPrem_Life_CoverName, Me.lblMsg)
-        If Me.txtPrem_Life_CoverNum.Text = "" Then
-            Me.lblMsg.Text = "Missing " & Me.lblPrem_Life_Cover.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-
-
-        'Call gnGET_SelectedItem(Me.cboPrem_Rate_Code, Me.txtPrem_Rate_Code, Me.txtPrem_Rate_CodeName, Me.lblMsg)
-        'Call DoProc_Premium_Code_Change()
-        If Trim(Me.txtPrem_Rate_TypeNum.Text) = "T" Then
-            Call DoProc_Premium_Code_Change()
-        End If
-        If Trim(Me.txtPrem_Rate_TypeNum.Text) = "T" And Me.txtPrem_Rate_Code.Text = "" Then
-            Me.lblMsg.Text = "Missing " & Me.lblPrem_Rate_Code.Text
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-        If Trim(Me.txtPrem_Rate_TypeNum.Text) = "T" And Val(Me.txtPrem_Rate.Text) = 0 Then
-            Me.lblMsg.Text = "Missing Premium Rate. Please select valid premium rate code..."
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-        If Trim(Me.txtPrem_Rate_TypeNum.Text) = "T" And Val(Me.txtPrem_Rate_Per.Text) = 0 Then
-            Me.lblMsg.Text = "Missing Premium Rate per e.g 100 or 1000. Please select valid premium rate code..."
-            FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            Exit Sub
-        End If
-
-
-
-        'If Me.optPrem_Applied_SA.Checked = True Then
-        '    Me.txtPrem_Rate_Applied_On.Text = "S"
-        '    Me.txtPrem_Is_SA_From_PremNum.Text = "N"
-        'ElseIf Me.optPrem_Applied_Prem.Checked = True Then
-        '    Me.txtPrem_Rate_Applied_On.Text = "P"
-        '    Me.txtPrem_Is_SA_From_PremNum.Text = "Y"
-        'Else
-        '    Me.txtPrem_Rate_Applied_On.Text = "S"
-        '    Me.txtPrem_Is_SA_From_PremNum.Text = "N"
-        'End If
-        'Call gnProc_DDL_Get(Me.cboPrem_Is_SA_From_Prem, RTrim(Me.txtPrem_Is_SA_From_PremNum.Text))
-
-        'Call gnGET_SelectedItem(Me.cboPrem_Is_SA_From_Prem, Me.txtPrem_Is_SA_From_PremNum, Me.txtPrem_Is_SA_From_PremName, Me.lblMsg)
-        'If Me.txtPrem_Is_SA_From_PremNum.Text = "" Then
-        '    'txtPrem_Is_SA_From_PremNum.Text = "N"
-        '    Me.lblMsg.Text = "Missing " & Me.lblPrem_Is_SA_From_Prem.Text
-        '    FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-        '    Exit Sub
-        'End If
-
-        Dim pvAMT As Double = 0
-        pvAMT = 0
-
-        Call MOD_GEN.gnInitialize_Numeric(Me.txtAnnualAnnuityLC)
-        'If Me.optPrem_Applied_Prem.Checked = True And Val(Me.txtAnnualAnnuityLC.Text) = 0 Then
-        '    Me.lblMsg.Text = "Missing Premium Amount. Please enter valid premium amount..."
-        '    FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-        '    Exit Sub
-        'End If
-
-        Me.txtAnnualAnnuityFC.Text = Me.txtAnnualAnnuityLC.Text
-        Call MOD_GEN.gnInitialize_Numeric(Me.txtAnnualAnnuityFC)
-
-        pvAMT = CType(Trim(Me.txtAnnualAnnuityLC.Text), Double)
-        If pvAMT <> 0 Then
-            Me.txtMonthlyAnnuityLC.Text = Format(pvAMT / 12, "###########0.00")
-            Me.txtMonthlyAnnuityFC.Text = Me.txtMonthlyAnnuityLC.Text
-        Else
-            txtMonthlyAnnuityLC.Text = "0"
-            Me.txtMonthlyAnnuityFC.Text = Me.txtMonthlyAnnuityLC.Text
-        End If
-
-        Call MOD_GEN.gnInitialize_Numeric(Me.txtMonthlyAnnuityLC)
-        Call MOD_GEN.gnInitialize_Numeric(Me.txtMonthlyAnnuityFC)
-
-
-        Call MOD_GEN.gnInitialize_Numeric(Me.txtPrem_Rate)
-
-        'VALIDATION for DATA NOT OLD START
-        If myTmp_RecStatus <> "OLD" Then
-
-            'Call gnGET_SelectedItem(Me.cboPrem_School_Term, Me.txtPrem_School_Term, Me.txtPrem_School_Term_Name, Me.lblMsg)
-            Select Case Trim(Me.txtProduct_Num.Text)
-                Case "E001"
-                    'If Trim(Me.txtPrem_School_Term.Text) = "" Then
-                    '    Me.lblPrem_School_Term.Enabled = True
-                    '    Me.cboPrem_School_Term.Enabled = True
-                    '    Me.lblMsg.Text = "Missing " & Me.lblPrem_School_Term.Text
-                    '    FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                    '    Exit Sub
-                    'End If
-                    '    If Val(Me.txtPrem_Sch_Fee_Prd.Text) = 0 Then
-                    '        Me.lblPrem_Sch_Fee_Prd.Enabled = True
-                    '        Me.txtPrem_Sch_Fee_Prd.Enabled = True
-                    '        Me.lblMsg.Text = "Missing " & Me.lblPrem_Sch_Fee_Prd.Text
-                    '        FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-                    '        Exit Sub
-                    '    End If
-                    'Case Else
-                    'Call MOD_GEN.gnInitialize_Numeric(Me.txtPrem_Sch_Fee_Prd)
-
-            End Select
-
-            Call MOD_GEN.gnInitialize_Numeric(Me.txtPrem_Discount_Rate)
-            Call MOD_GEN.gnInitialize_Numeric(Me.txtPrem_Loading_Rate)
-
-            Call MOD_GEN.gnInitialize_Numeric(Me.txtPrem_Payable)
-
-
-
-        End If 'VALIDATION for DATA NOT OLD END
-
-        If Trim(Me.txtPrem_Rate_TypeNum.Text) = "N" Then
-            Me.txtPrem_Fixed_Rate.Text = "0.00"
-            Me.txtPrem_Fixed_Rate_PerNum.Text = "0"
-            Me.txtPrem_Rate.Text = "0.00"
-            Me.txtPrem_Rate_Per.Text = "0"
-        End If
-
-        If Trim(Me.txtPrem_Rate_TypeNum.Text) = "T" Then
-            Me.txtPrem_Fixed_Rate.Text = "0.00"
-            Me.txtPrem_Fixed_Rate_PerNum.Text = "1000"
-        End If
-
-        '============================================
-
-
-        'Me.lblMsg.Text = "About to submit data... "
-        'FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-
-        'If RTrim(txtNum.Text) = "" Then
-        '    Me.txtNum.Text = MOD_GEN.gnGet_Serial_Und("GET_SN_IL_UNDW", Trim(strP_ID), Trim(Me.txtGroupNum.Text), "XXXX", "XXXX", "")
-        '    If Trim(txtNum.Text) = "" Or Trim(Me.txtNum.Text) = "0" Or Trim(Me.txtNum.Text) = "*" Then
-        '        Me.txtNum.Text = ""
-        '        Me.lblMessage.Text = "Sorry!. Unable to get the next record id. Please contact your service provider..."
-        '        FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
-        '        Me.lblMessage.Text = "Status:"
-        '        Exit Sub
-        '    ElseIf Trim(Me.txtNum.Text) = "PARAM_ERR" Then
-        '        Me.txtNum.Text = ""
-        '        Me.lblMessage.Text = "Sorry!. Unable to get the next record id - INVALID PARAMETER(S) - " & Trim(strP_ID)
-        '        FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
-        '        Me.lblMessage.Text = "Status:"
-        '        Exit Sub
-        '    ElseIf Trim(Me.txtNum.Text) = "DB_ERR" Then
-        '        Me.txtNum.Text = ""
-        '        Me.lblMessage.Text = "Sorry!. Unable to connect to database. Please contact your service provider..."
-        '        FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
-        '        Me.lblMessage.Text = "Status:"
-        '        Exit Sub
-        '    ElseIf Trim(Me.txtNum.Text) = "ERR_ERR" Then
-        '        Me.txtNum.Text = ""
-        '        Me.lblMessage.Text = "Sorry!. Unable to get connection object. Please contact your service provider..."
-        '        FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
-        '        Me.lblMessage.Text = "Status:"
-        '        Exit Sub
-        '    End If
-
-        'End If
-
-
-        '******************************************************
-        ' START CODES - CALCULATE SUM ASSURED FROM PREMIUM
-        '******************************************************
-
-
-        '******************************************************
-        ' END CODES - CALCULATE SUM ASSURED FROM PREMIUM
-        '******************************************************
-
-        Dim myUserIDX As String = ""
-        Try
-            myUserIDX = CType(Session("MyUserIDX"), String)
-        Catch ex As Exception
-            myUserIDX = ""
-        End Try
-
-
-        Dim mystrCONN As String = CType(Session("connstr"), String)
-        Dim objOLEConn As New OleDbConnection()
-        objOLEConn.ConnectionString = mystrCONN
-
-        Try
-            'open connection to database
-            objOLEConn.Open()
-        Catch ex As Exception
-            Me.lblMsg.Text = "Unable to connect to database. Reason: " & ex.Message
-            'FirstMsg = "Javascript:alert('" & Me.txtMsg.Text & "')"
-            objOLEConn = Nothing
-            Exit Sub
-        End Try
-
-
-        strTable = strTableName
-
-        strSQL = ""
-        strSQL = "SELECT TOP 1 * FROM " & strTable
-        strSQL = strSQL & " WHERE TBIL_ANN_POL_PRM_FILE_NO = '" & RTrim(txtFileNum.Text) & "'"
-        'If Val(LTrim(RTrim(Me.txtRecNo.Text))) <> 0 Then
-        '    strSQL = strSQL & " AND TBIL_ANN_POL_PRM_REC_ID = '" & Val(RTrim(txtRecNo.Text)) & "'"
-        'End If
-
-
-        Dim objDA As System.Data.OleDb.OleDbDataAdapter
-        objDA = New System.Data.OleDb.OleDbDataAdapter(strSQL, objOLEConn)
-        'or
-        'objDA.SelectCommand = New System.Data.OleDb.OleDbCommand(strSQL, objOleConn)
-
-        Dim m_cbCommandBuilder As System.Data.OleDb.OleDbCommandBuilder
-        m_cbCommandBuilder = New System.Data.OleDb.OleDbCommandBuilder(objDA)
-
-        Dim obj_DT As New System.Data.DataTable
-        'Dim m_rwContact As System.Data.DataRow
-        Dim intC As Integer = 0
-
-
-        Try
-
-            objDA.Fill(obj_DT)
-
-            If obj_DT.Rows.Count = 0 Then
-                '   Creating a new record
-
-                Dim drNewRow As System.Data.DataRow
-                drNewRow = obj_DT.NewRow()
-
-                drNewRow("TBIL_ANN_POL_PRM_MDLE") = RTrim("A")
-
-                drNewRow("TBIL_ANN_POL_PRM_FILE_NO") = RTrim(Me.txtFileNum.Text)
-                drNewRow("TBIL_ANN_POL_PRM_PROP_NO") = RTrim(Me.txtQuote_Num.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_POLY_NO") = RTrim(Me.txtPolNum.Text)
-
-                drNewRow("TBIL_ANN_POL_PRM_PRDCT_CD") = RTrim(Me.txtProduct_Num.Text)
-                drNewRow("TBIL_ANN_POL_PRM_PLAN_CD") = RTrim(Me.txtPlan_Num.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_COVER_CD") = RTrim(Me.txtCover_Num.Text)
-
-                drNewRow("TBIL_ANN_POL_PRM_PERIOD_YRS") = Val(Trim(Me.txtPrem_Period_Yr.Text))
-
-                If Trim(Me.txtPrem_Start_Date.Text) <> "" Then
-                    drNewRow("TBIL_ANN_POL_PRM_FROM") = dteStart
-                End If
-                If Trim(Me.txtPrem_End_Date.Text) <> "" Then
-                    drNewRow("TBIL_ANN_POL_PRM_TO") = dteEnd
-                End If
-
-                drNewRow("TBIL_ANN_POL_PRM_MODE_PAYT") = RTrim(Me.txtPrem_MOP_Type.Text)
-                drNewRow("TBIL_ANN_POL_PRM_MOP_RATE") = RTrim(Me.txtPrem_MOP_Rate.Text)
-
-                drNewRow("TBIL_ANN_POL_PRM_CURRCY") = Trim(Me.txtPrem_SA_CurrencyCode.Text)
-                drNewRow("TBIL_ANN_POL_PRM_EXCHG_RATE") = RTrim(Me.txtPrem_Exchange_Rate.Text)
-
-                'drNewRow("TBIL_ANN_POL_PRM_ANN_CONTRIB_LC") = Trim(Me.txtAnnualAnnuityLC.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_ANN_CONTRIB_FC") = Trim(Me.txtAnnualAnnuityFC.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_MTH_CONTRIB_LC") = Trim(Me.txtMonthlyAnnuityLC.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_MTH_CONTRIB_FC") = Trim(Me.txtMonthlyAnnuityFC.Text)
-
-
-                'new fields
-                drNewRow("TBIL_ANN_POL_PRM_LIFE_COVER") = Trim(Me.txtPrem_Life_CoverNum.Text)
-                'drNewRow("TBIL_ANN_POL_SA_FROM_PRM") = Trim(Me.txtPrem_Is_SA_From_PremNum.Text)
-                drNewRow("TBIL_ANN_POL_PRM_RT_TAB_FIX") = Trim(Me.txtPrem_Rate_TypeNum.Text)
-                drNewRow("TBIL_ANN_POL_PRM_RT_FIXED") = Trim(Me.txtPrem_Fixed_Rate.Text)
-                drNewRow("TBIL_ANN_POL_PRM_RT_FIX_PER") = Trim(Me.txtPrem_Fixed_Rate_PerNum.Text)
-
-
-                drNewRow("TBIL_ANN_POL_PRM_RATE_CD") = RTrim(Me.txtPrem_Rate_Code.Text)
-                drNewRow("TBIL_ANN_POL_PRM_RATE") = RTrim(Me.txtPrem_Rate.Text)
-                ' drNewRow("TBIL_ANN_POL_PRM_RATE_PER") = RTrim(Me.txtPrem_Rate_Per.Text)
-
-                'drNewRow("TBIL_ANN_POL_PRM_NO_INSTAL") = RTrim(Me.txtPrem_No_Instal.Text)
-
-                'drNewRow("TBIL_ANN_POL_PRM_RT_APPLIED_ON") = Trim(Me.txtPrem_Rate_Applied_On.Text)
-
-                'new fields
-                drNewRow("TBIL_ANN_POL_PRM_RT_BONUS_CD") = Trim(Me.txtPrem_Bonus_YN.Text)
-                drNewRow("TBIL_ANN_POL_PRM_ALLOC_CD") = Trim(Me.txtPrem_Allocation_YN.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_SCH_TERM") = Trim(Me.txtPrem_School_Term.Text)
-                'drNewRow("TBIL_ANN_POL_PRM_FEE_PRD") = Val(Me.txtPrem_Sch_Fee_Prd.Text)
-
-                drNewRow("TBIL_ANN_POL_PRM_DISCNT_PCENT") = RTrim(Me.txtPrem_Discount_Rate.Text)
-                drNewRow("TBIL_ANN_POL_PRM_LOAD_PCENT") = RTrim(Me.txtPrem_Loading_Rate.Text)
-                drNewRow("TBIL_ANN_POL_PRM_ENROL_NO") = Val(txtPrem_Enrollee_Num.Text)
-
-                'condition added by femi reason b'cos the value is empty but it expects decimal/numeric value
-                If RTrim(Me.txtPrem_Rate_Per.Text) <> "" Then
-                    drNewRow("TBIL_ANN_POL_PRM_RATE_PER") = RTrim(Me.txtPrem_Rate_Per.Text)
-                Else
-                    drNewRow("TBIL_ANN_POL_PRM_RATE_PER") = 0.0
-                End If
-
-                drNewRow("TBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE") = txtTBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE.Text
-                drNewRow("TBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR") = txtTBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR.Text
-
-
-                drNewRow("TBIL_ANN_POL_PRM_FLAG") = "A"
-                drNewRow("TBIL_ANN_POL_PRM_OPERID") = CType(myUserIDX, String)
-                drNewRow("TBIL_ANN_POL_PRM_KEYDTE") = Now
-
-                obj_DT.Rows.Add(drNewRow)
-                'obj_DT.AcceptChanges()
-                intC = objDA.Update(obj_DT)
-
-                drNewRow = Nothing
-
-                Me.lblMsg.Text = "New Record Saved to Database Successfully."
-
-            Else
-                '   Update existing record
-
-                'm_rwContact = m_dtContacts.Rows(0)
-                'm_rwContact("ContactName") = "Bob Brown"
-                'm_rwContact.AcceptChanges()
-                'm_dtContacts.AcceptChanges()
-                'Dim intC As Integer = m_daDataAdapter.Update(m_dtContacts)
-
-
-                With obj_DT
-                    .Rows(0)("TBIL_ANN_POL_PRM_FILE_NO") = RTrim(Me.txtFileNum.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_PROP_NO") = RTrim(Me.txtQuote_Num.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_POLY_NO") = RTrim(Me.txtPolNum.Text)
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_PRDCT_CD") = RTrim(Me.txtProduct_Num.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_PLAN_CD") = RTrim(Me.txtPlan_Num.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_COVER_CD") = RTrim(Me.txtCover_Num.Text)
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_PERIOD_YRS") = Val(Trim(Me.txtPrem_Period_Yr.Text))
-
-                    If Trim(Me.txtPrem_Start_Date.Text) <> "" Then
-                        .Rows(0)("TBIL_ANN_POL_PRM_FROM") = dteStart
-                    End If
-                    If Trim(Me.txtPrem_End_Date.Text) <> "" Then
-                        .Rows(0)("TBIL_ANN_POL_PRM_TO") = dteEnd
-                    End If
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_CURRCY") = Trim(Me.txtPrem_SA_CurrencyCode.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_MOP_RATE") = RTrim(Me.txtPrem_MOP_Rate.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_EXCHG_RATE") = RTrim(Me.txtPrem_Exchange_Rate.Text)
-
-                    '.Rows(0)("TBIL_ANN_POL_PRM_ANN_CONTRIB_LC") = Trim(Me.txtAnnualAnnuityLC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_ANN_CONTRIB_FC") = Trim(Me.txtAnnualAnnuityFC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_MTH_CONTRIB_LC") = Trim(Me.txtMonthlyAnnuityLC.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_MTH_CONTRIB_FC") = Trim(Me.txtMonthlyAnnuityFC.Text)
-
-                    'new fields
-                    .Rows(0)("TBIL_ANN_POL_PRM_LIFE_COVER") = Trim(Me.txtPrem_Life_CoverNum.Text)
-                    '.Rows(0)("TBIL_ANN_POL_SA_FROM_PRM") = Trim(Me.txtPrem_Is_SA_From_PremNum.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RT_TAB_FIX") = Trim(Me.txtPrem_Rate_TypeNum.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RT_FIXED") = Trim(Me.txtPrem_Fixed_Rate.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RT_FIX_PER") = Trim(Me.txtPrem_Fixed_Rate_PerNum.Text)
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_MODE_PAYT") = RTrim(Me.txtPrem_MOP_Type.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RATE_CD") = RTrim(Me.txtPrem_Rate_Code.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_RATE") = RTrim(Me.txtPrem_Rate.Text)
-
-                    'condition added by femi reason b'cos the value is empty but it expects decimal/numeric value
-                    If RTrim(Me.txtPrem_Rate_Per.Text) <> "" Then
-                        .Rows(0)("TBIL_ANN_POL_PRM_RATE_PER") = RTrim(Me.txtPrem_Rate_Per.Text)
-                    Else
-                        .Rows(0)("TBIL_ANN_POL_PRM_RATE_PER") = 0.0
-                    End If
-
-                    '.Rows(0)("TBIL_ANN_POL_PRM_RT_APPLIED_ON") = Trim(Me.txtPrem_Rate_Applied_On.Text)
-
-                    'new fields
-                    .Rows(0)("TBIL_ANN_POL_PRM_RT_BONUS_CD") = Trim(Me.txtPrem_Bonus_YN.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_ALLOC_CD") = Trim(Me.txtPrem_Allocation_YN.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_SCH_TERM") = Trim(Me.txtPrem_School_Term.Text)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_FEE_PRD") = Val(Me.txtPrem_Sch_Fee_Prd.Text)
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_DISCNT_PCENT") = RTrim(Me.txtPrem_Discount_Rate.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_LOAD_PCENT") = RTrim(Me.txtPrem_Loading_Rate.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_ENROL_NO") = Val(txtPrem_Enrollee_Num.Text)
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE") = Trim(txtTBIL_ANN_POL_PRM_ANNUAL_PCENT_PYMT_INCREASE.Text)
-                    .Rows(0)("TBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR") = Trim(txtTBIL_ANN_POL_PRM_DEATH_BENEFIT_ANNUAL_FACTOR.Text)
-
-
-                    .Rows(0)("TBIL_ANN_POL_PRM_FLAG") = "C"
-                    '.Rows(0)("TBIL_ANN_POL_PRM_OPERID") = CType(myUserIDX, String)
-                    '.Rows(0)("TBIL_ANN_POL_PRM_KEYDTE") = Now
-                End With
-
-                'obj_DT.AcceptChanges()
-                intC = objDA.Update(obj_DT)
-
-                Me.lblMsg.Text = "Record Saved to Database Successfully."
-
-            End If
-
-        Catch ex As Exception
-            Me.lblMsg.Text = ex.Message.ToString
-            Exit Sub
-        End Try
-
-        obj_DT.Dispose()
-        obj_DT = Nothing
-
-        m_cbCommandBuilder.Dispose()
-        m_cbCommandBuilder = Nothing
-
-        If objDA.SelectCommand.Connection.State = ConnectionState.Open Then
-            objDA.SelectCommand.Connection.Close()
-        End If
-        objDA.Dispose()
-        objDA = Nothing
-
-        If objOLEConn.State = ConnectionState.Open Then
-            objOLEConn.Close()
-        End If
-        objOLEConn = Nothing
-
-
-
-        Me.cmdNext.Enabled = True
-
-        FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "');"
-
-        'Call DoNew()
-
-
-    End Sub
-
-
-    '    Private Sub Proc_DoCalc_Prem()
-
-    '        '******************************************************
-    '        ' START CODES - CALCULATE SUM ASSURED FROM PREMIUM
-    '        '******************************************************
-
-
-    '        Dim mystrCONN As String = CType(Session("connstr"), String)
-    '        Dim objOLEConn As New OleDbConnection(mystrCONN)
-
-    '        Try
-    '            'open connection to database
-    '            objOLEConn.Open()
-    '        Catch ex As Exception
-    '            Me.lblMsg.Text = "Unable to connect to database. Reason: " & ex.Message
-    '            objOLEConn = Nothing
-    '            Exit Sub
-    '        End Try
-
-
-    '        Dim strHas_Life_Cover As String
-    '        Dim strRate_Type As String
-
-    '        Dim dblSum_Assured_LC As Double = 0
-    '        Dim dblSum_Assured_FC As Double = 0
-
-    '        Dim dblLife_Cover_SA_LC As Double = 0
-    '        Dim dblLife_Cover_SA_FC As Double = 0
-
-    '        Dim dblFree_Life_Cover_Lmt_LC As Double = 0
-    '        Dim dblFree_Life_Cover_Lmt_FC As Double = 0
-
-    '        Dim dblAnnual_Contrib_LC As Double = 0
-    '        Dim dblAnnual_Contrib_FC As Double = 0
-
-    '        Dim dblPrem_Rate As Double = 0
-    '        Dim dblRate_Per As Integer = 0
-    '        Dim dblTerm As Double = 0
-
-    '        Dim dblMOP_Rate As Double = 0
-    '        Dim dblMOP_Per As Double = 0
-    '        Dim dblMOP_Contrib_LC As Double = 0
-    '        Dim dblMOP_Contrib_FC As Double = 0
-
-    '        Dim dblMOP_Fee As Double = 0
-    '        Dim dblMOP_Prem_LC As Double = 0
-    '        Dim dblMOP_Prem_FC As Double = 0
-
-
-
-    '        strHas_Life_Cover = Trim(Me.txtPrem_Life_CoverNum.Text)
-    '        'txtPrem_Rate_TypeNum.Text = "T"
-    '        strRate_Type = Trim(Me.txtPrem_Rate_TypeNum.Text)
-    '        'Response.Write("<br />Rate Type: " & strRate_Type)
-
-
-    '        dblPrem_Rate = 0
-    '        dblRate_Per = 0
-
-    '        dblAnnual_Contrib_LC = Val(Me.txtAnnualAnnuityLC.Text)
-    '        dblAnnual_Contrib_FC = Val(Me.txtAnnualAnnuityFC.Text)
-
-    '        dblAnnual_Basic_Prem_LC = 0
-    '        dblAnnual_Basic_Prem_FC = 0
-
-    '        dblTotal_Add_Prem_LC = 0
-    '        dblTotal_Add_Prem_FC = 0
-
-
-    '        strREC_ID = Trim(strF_ID)
-    '        strREC_ID = Trim(Me.txtFileNum.Text)
-    '        strQ_ID = Trim(Me.txtQuote_Num.Text)
-    '        strP_ID = Trim(Me.txtPolNum.Text)
-
-    '        dblMOP_Rate = 0
-    '        dblMOP_Per = 0
-
-    '        Dim myRetValue As String = "0"
-    '        myRetValue = MOD_GEN.gnGET_RATE("GET_IL_MOP_FACTOR", "IND", Me.txtPrem_MOP_Type.Text, "", "", "", Me.lblMsg, Nothing, Me.txtPrem_MOP_Per)
-    '        If Left(LTrim(myRetValue), 3) = "ERR" Then
-    '            dblMOP_Rate = 0
-    '        Else
-    '            dblMOP_Rate = Val(myRetValue)
-    '            dblMOP_Per = Val(Me.txtPrem_MOP_Per.Text)
-    '        End If
-
-
-    '        '******************************************************
-    '        ' START CODES - Education Endowment
-    '        '******************************************************
-    '        Select Case Trim(Me.txtProduct_Num.Text)
-    '            Case "A001"
-
-    '                dblTmp_Amt = 0
-
-    '                'Select Case Trim(Me.txtPrem_Rate_Applied_On.Text)
-    '                'Case "S"
-    '                Select Case UCase(Trim(strRate_Type))
-    '                    Case "N"
-    '                        dblAnnual_Basic_Prem_LC = 0
-    '                        dblAnnual_Basic_Prem_FC = 0
-
-    '                        'Me.txtCalc_Ann_Basic_Prem_LC.Text = dblAnnual_Basic_Prem_LC.ToString
-
-    '                        dblAnnual_Basic_Prem_FC = dblAnnual_Basic_Prem_LC
-    '                        'Me.txtCalc_Ann_Basic_Prem_FC.Text = dblAnnual_Basic_Prem_FC.ToString
-
-    '                        dblPrem_Rate = 0
-    '                        dblRate_Per = 0
-
-    '                    Case "F"
-    '                        'If TBIL_ANN_POL_PRM_RT_TAB_FIX of Policy file Premium information = ‘F’ 
-    '                        'use the fixed rate instead of Table rate. 
-    '                        'Use the Fixed Rate per Go to (e0)
-
-    '                        '* Rat = eTBIL_ANN_POL_PRM_RT_FIXED
-    '                        '*Rate per = TBIL_ANN_POL_PRM_RT_FIX_PER
-
-    '                        'dblPrem_Rate = 0
-    '                        'dblRate_Per = 0
-    '                        'dblTmp_Amt = 0
-
-    '                        'If IsNumeric(Trim(Me.txtPrem_Fixed_Rate.Text)) Then
-    '                        '    dblPrem_Rate = CType(Trim(Me.txtPrem_Fixed_Rate.Text), Double)
-    '                        'End If
-    '                        'If IsNumeric(Trim(Me.txtPrem_Fixed_Rate_PerNum.Text)) Then
-    '                        '    dblRate_Per = CType(Trim(Me.txtPrem_Fixed_Rate_PerNum.Text), Integer)
-    '                        'End If
-
-    '                        ''If Val(dblFree_Life_Cover_Lmt_LC) > 0 And Val(Me.txtPrem_Sch_Fee_Prd.Text) > 0 And Val(dblPrem_Rate) <> 0 And Val(dblRate_Per) <> 0 Then
-    '                        ''    dblTmp_Amt = (dblFree_Life_Cover_Lmt_LC / (3 * Val(Me.txtPrem_Sch_Fee_Prd.Text))) / dblRate_Per * dblPrem_Rate
-    '                        ''End If
-
-    '                        'dblTmp_Amt = Format(dblTmp_Amt, "###########0.00")
-    '                        'dblAnnual_Basic_Prem_LC = dblTmp_Amt
-    '                        ''Me.txtCalc_Ann_Basic_Prem_LC.Text = dblAnnual_Basic_Prem_LC.ToString
-
-    '                        'dblAnnual_Basic_Prem_FC = dblTmp_Amt
-    '                        ''Me.txtCalc_Ann_Basic_Prem_FC.Text = dblAnnual_Basic_Prem_FC.ToString
-
-
-    '                        Dim annuity As Double = Nothing
-    '                        Dim purchaseAmount As Double = Nothing
-    '                        Dim rate As Double = Nothing
-    '                        Dim ratePer As Double = Nothing
-
-    '                        If txtPrem_Fixed_Rate.Text <> "" Then
-    '                            If IsNumeric(Trim(txtPrem_Fixed_Rate.Text)) Then
-    '                                rate = CType(Trim(Me.txtPrem_Fixed_Rate.Text), Double)
-    '                            End If
-    '                        End If
-    '                        If txtPurchaseAnnuityLC.Text <> "" Then
-    '                            If IsNumeric(Trim(txtPurchaseAnnuityLC.Text)) Then
-    '                                purchaseAmount = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
-    '                            End If
-    '                        End If
-    '                        If txtPurchaseAnnuityLC.Text <> "" Then
-    '                            If IsNumeric(Trim(txtPurchaseAnnuityLC.Text)) Then
-    '                                purchaseAmount = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
-    '                            End If
-    '                        End If
-    '                        If cboPrem_Fixed_Rate_Per.Text <> 0 Then
-    '                            If IsNumeric(Trim(cboPrem_Fixed_Rate_Per.SelectedValue)) Then
-    '                                ratePer = CType(Trim(cboPrem_Fixed_Rate_Per.SelectedValue), Double)
-    '                            End If
-    '                        End If
-    '                        annuity = (purchaseAmount * rate) / ratePer
-
-    '                    Case "T"
-    '                        'GET RATE FROM TABLE USING THE FOLLOWING
-    '                        '   TBIL_ANN_POL_PRM_RATE_CD
-    '                        '   TBIL_ANN_POL_PRM_PERIOD_YR
-    '                        '   TBIL_ANN_POLY_ASSRD_AGE
-
-    '                        '*Rate   -  TBIL_ANN_PRM_RT_RATE 
-    '                        'Rate per   - TBIL_ANN_PRM_RT_PER.
-
-    '                        'Calculate Annual Basic Premium as Follows.
-    '                        '	Annual Basic Prem = S.A multiplied by rate divided by Rate per.
-    '                        'Move Annual Basic Prem. Calculated to 
-    '                        '   TBIL_ANN_POL_PRM_DTL_BASIC_PRM_LC
-    '                        '   TBIL_ANN_POL_PRM_DTL_BASIC_PRM_FC
-
-    '                        dblPrem_Rate = 0
-    '                        dblRate_Per = 0
-    '                        dblTmp_Amt = 0
-
-
-    '                        If IsNumeric(Trim(Me.txtPrem_Rate.Text)) Then
-    '                            dblPrem_Rate = CType(Trim(Me.txtPrem_Rate.Text), Double)
-    '                        End If
-    '                        If IsNumeric(Trim(Me.txtPrem_Rate_Per.Text)) Then
-    '                            dblRate_Per = CType(Trim(Me.txtPrem_Rate_Per.Text), Integer)
-    '                        End If
-
-    '                        'If Val(dblFree_Life_Cover_Lmt_LC) > 0 And Val(Me.txtPrem_Sch_Fee_Prd.Text) > 0 And Val(dblPrem_Rate) <> 0 And Val(dblRate_Per) <> 0 Then
-    '                        '    dblTmp_Amt = (dblFree_Life_Cover_Lmt_LC / (3 * Val(Me.txtPrem_Sch_Fee_Prd.Text))) / dblRate_Per * dblPrem_Rate
-    '                        'End If
-
-    '                        dblTmp_Amt = Format(dblTmp_Amt, "###########0.00")
-    '                        dblAnnual_Basic_Prem_LC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_LC.Text = dblAnnual_Basic_Prem_LC.ToString
-
-    '                        dblAnnual_Basic_Prem_FC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_FC.Text = dblAnnual_Basic_Prem_FC.ToString
-
-    '                End Select
-
-
-    '            Case "P"
-    '                '(TBIL_ANN_POL_PRM_ANN_CONTRIB_LC less any additional covers premium Times (3 times TBIL_ANN_POL_PRM_FEE_PRD)) divided by Table Rate  Times Rate Per.
-
-    '                'Move result to TBIL_ANN_POL_PRM_DTL_SA_LC
-    '                '               TBIL_ANN_POL_PRM_DTL_LIFE_COVER_SA_LC()
-
-    '                'Move TBIL_ANN_POL_PRM_ANN_CONTRIB less Total Additional cover premiums to  TBIL_ANN_POL_PRM_DTL_BASIC_PRM_LC
-
-
-    '                Call Proc_DoCalc_AddPrem(objOLEConn)
-
-    '                dblTmp_Amt = dblAnnual_Contrib_LC - dblTotal_Add_Prem_LC
-
-    '                Select Case UCase(Trim(strRate_Type))
-    '                    Case "N"
-    '                        dblAnnual_Basic_Prem_LC = 0
-    '                        dblAnnual_Basic_Prem_FC = 0
-
-    '                        'Me.txtCalc_Ann_Basic_Prem_LC.Text = dblAnnual_Basic_Prem_LC.ToString
-
-    '                        dblAnnual_Basic_Prem_FC = dblAnnual_Basic_Prem_LC
-    '                        'Me.txtCalc_Ann_Basic_Prem_FC.Text = dblAnnual_Basic_Prem_FC.ToString
-
-    '                        dblPrem_Rate = 0
-    '                        dblRate_Per = 0
-
-    '                    Case "F"
-    '                        'If TBIL_ANN_POL_PRM_RT_TAB_FIX of Policy file Premium information = ‘F’ 
-    '                        'use the fixed rate instead of Table rate. 
-    '                        'Use the Fixed Rate per Go to (e0)
-
-    '                        '* Rat = eTBIL_ANN_POL_PRM_RT_FIXED
-    '                        '*Rate per = TBIL_ANN_POL_PRM_RT_FIX_PER
-
-    '                        dblPrem_Rate = 0
-    '                        dblRate_Per = 0
-    '                        dblSum_Assured_LC = 0
-    '                        dblSum_Assured_FC = 0
-
-
-    '                        If IsNumeric(Trim(Me.txtPrem_Fixed_Rate.Text)) Then
-    '                            dblPrem_Rate = CType(Trim(Me.txtPrem_Fixed_Rate.Text), Double)
-    '                        End If
-    '                        If IsNumeric(Trim(Me.txtPrem_Fixed_Rate_PerNum.Text)) Then
-    '                            dblRate_Per = CType(Trim(Me.txtPrem_Fixed_Rate_PerNum.Text), Integer)
-    '                        End If
-
-    '                        'If Val(dblTmp_Amt) > 0 And Val(Me.txtPrem_Sch_Fee_Prd.Text) > 0 And Val(dblPrem_Rate) <> 0 And Val(dblRate_Per) <> 0 Then
-    '                        '    dblSum_Assured_LC = ((dblTmp_Amt / dblMOP_Rate) * (3 * Val(Me.txtPrem_Sch_Fee_Prd.Text))) / dblPrem_Rate * dblRate_Per
-    '                        'End If
-
-    '                        dblSum_Assured_LC = Format(dblSum_Assured_LC, "###########0.00")
-    '                        dblSum_Assured_FC = dblSum_Assured_LC
-
-
-    '                        dblTmp_Amt = Format(dblTmp_Amt, "###########0.00")
-    '                        dblAnnual_Basic_Prem_LC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_LC.Text = dblAnnual_Basic_Prem_LC.ToString
-
-    '                        dblAnnual_Basic_Prem_FC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_FC.Text = dblAnnual_Basic_Prem_FC.ToString
-
-    '                    Case "T"
-    '                        'GET RATE FROM TABLE USING THE FOLLOWING
-    '                        '   TBIL_ANN_POL_PRM_RATE_CD
-    '                        '   TBIL_ANN_POL_PRM_PERIOD_YR
-    '                        '   TBIL_ANN_POLY_ASSRD_AGE
-
-    '                        '*Rate   -  TBIL_ANN_PRM_RT_RATE 
-    '                        'Rate per   - TBIL_ANN_PRM_RT_PER.
-
-    '                        'Calculate Annual Basic Premium as Follows.
-    '                        '	Annual Basic Prem = S.A multiplied by rate divided by Rate per.
-    '                        'Move Annual Basic Prem. Calculated to 
-    '                        '   TBIL_ANN_POL_PRM_DTL_BASIC_PRM_LC
-    '                        '   TBIL_ANN_POL_PRM_DTL_BASIC_PRM_FC
-
-    '                        dblPrem_Rate = 0
-    '                        dblRate_Per = 0
-    '                        dblSum_Assured_LC = 0
-    '                        dblSum_Assured_FC = 0
-
-
-    '                        If IsNumeric(Trim(Me.txtPrem_Rate.Text)) Then
-    '                            dblPrem_Rate = CType(Trim(Me.txtPrem_Rate.Text), Double)
-    '                        End If
-    '                        If IsNumeric(Trim(Me.txtPrem_Rate_Per.Text)) Then
-    '                            dblRate_Per = CType(Trim(Me.txtPrem_Rate_Per.Text), Integer)
-    '                        End If
-
-    '                        'If Val(dblTmp_Amt) > 0 And Val(Me.txtPrem_Sch_Fee_Prd.Text) > 0 And Val(dblPrem_Rate) <> 0 And Val(dblRate_Per) <> 0 Then
-    '                        '    dblSum_Assured_LC = ((dblTmp_Amt / dblMOP_Rate) * (3 * Val(Me.txtPrem_Sch_Fee_Prd.Text))) / dblPrem_Rate * dblRate_Per
-    '                        'End If
-
-    '                        dblSum_Assured_LC = Format(dblSum_Assured_LC, "###########0.00")
-    '                        dblSum_Assured_FC = dblSum_Assured_LC
-
-
-    '                        dblTmp_Amt = Format(dblTmp_Amt, "###########0.00")
-    '                        dblAnnual_Basic_Prem_LC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_LC.Text = dblAnnual_Basic_Prem_LC.ToString
-
-    '                        dblAnnual_Basic_Prem_FC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_FC.Text = dblAnnual_Basic_Prem_FC.ToString
-
-    '                    Case Else
-    '                        '*Rate   -  0 
-    '                        'Rate per   - 0.
-
-    '                End Select
-
-    '                'End Select
-
-    '                'GoTo Skip_C001
-
-    '        End Select
-
-    '        '******************************************************
-    '        ' END CODES - Education Endowment
-    '        '******************************************************
-
-
-
-    '        '******************************************************
-    '        ' START CODES - CALCULATE SUM ASSURED FROM PREMIUM
-    '        '******************************************************
-
-
-    '        Select Case Trim(Me.txtPrem_Rate_Applied_On.Text)
-    '            Case "P"
-    '                'Sum Assured =
-    '                '(Annual Contribution – Additional Cover Premium) X Rate per  / Premium Rate
-
-    '                'Before using the Annual Contribution Check if there are Additional covers. If there are, then sum the Additional cover premium and subtract it from the Annual Contribution before applying the table rate.
-
-    '                'Move Sum Assured calculated to TBIL_ANN_POL_PRM_DTL_SA_LC
-    '                '                TBIL_ANN_POL_PRM_DTL_LIFE_COVER_SA_LC()
-    '                'Move (Annual Contribution – Additional Cover Premium)
-    '                '             To TBIL_ANN_POL_PRM_DTL_BASIC_PRM_LC
-
-    '                dblTotal_Add_Prem_LC = 0
-    '                Call Proc_DoCalc_AddPrem(objOLEConn)
-
-    '                If Val(dblAnnual_Contrib_LC) > 0 And dblMOP_Rate <> 0 Then
-    '                    dblTmp_Amt = (dblAnnual_Contrib_LC / dblMOP_Rate) - dblTotal_Add_Prem_LC
-    '                End If
-
-    '                'Response.Write("<br />Annual Contribution: " & dblAnnual_Contrib_LC)
-    '                'Response.Write("<br />Bal Contribution: " & dblTmp_Amt)
-    '                'Response.Write("<br />Rate Type: " & strRate_Type)
-
-
-    '                Select Case UCase(Trim(strRate_Type))
-    '                    Case "N"
-    '                        dblAnnual_Basic_Prem_LC = 0
-    '                        dblAnnual_Basic_Prem_FC = 0
-
-    '                        'Me.txtCalc_Ann_Basic_Prem_LC.Text = dblAnnual_Basic_Prem_LC.ToString
-
-    '                        dblAnnual_Basic_Prem_FC = dblAnnual_Basic_Prem_LC
-    '                        'Me.txtCalc_Ann_Basic_Prem_FC.Text = dblAnnual_Basic_Prem_FC.ToString
-
-    '                        dblPrem_Rate = 0
-    '                        dblRate_Per = 0
-
-    '                    Case "F"
-    '                        'If TBIL_ANN_POL_PRM_RT_TAB_FIX of Policy file Premium information = ‘F’ 
-    '                        'use the fixed rate instead of Table rate. 
-    '                        'Use the Fixed Rate per Go to (e0)
-
-    '                        '* Rat = eTBIL_ANN_POL_PRM_RT_FIXED
-    '                        '*Rate per = TBIL_ANN_POL_PRM_RT_FIX_PER
-
-    '                        dblPrem_Rate = 0
-    '                        dblRate_Per = 0
-    '                        dblSum_Assured_LC = 0
-    '                        dblSum_Assured_FC = 0
-
-
-    '                        If IsNumeric(Trim(Me.txtPrem_Fixed_Rate.Text)) Then
-    '                            dblPrem_Rate = CType(Trim(Me.txtPrem_Fixed_Rate.Text), Double)
-    '                        End If
-    '                        If IsNumeric(Trim(Me.txtPrem_Fixed_Rate_PerNum.Text)) Then
-    '                            dblRate_Per = CType(Trim(Me.txtPrem_Fixed_Rate_PerNum.Text), Integer)
-    '                        End If
-
-    '                        If Val(dblTmp_Amt) > 0 And Val(dblPrem_Rate) <> 0 And Val(dblRate_Per) <> 0 Then
-    '                            dblSum_Assured_LC = dblTmp_Amt * dblRate_Per / dblPrem_Rate
-    '                        End If
-
-    '                        dblSum_Assured_LC = Format(dblSum_Assured_LC, "###########0.00")
-    '                        dblSum_Assured_FC = dblSum_Assured_LC
-
-
-    '                        dblTmp_Amt = Format(dblTmp_Amt, "###########0.00")
-    '                        dblAnnual_Basic_Prem_LC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_LC.Text = dblAnnual_Basic_Prem_LC.ToString
-
-    '                        dblAnnual_Basic_Prem_FC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_FC.Text = dblAnnual_Basic_Prem_FC.ToString
-
-    '                    Case "T"
-    '                        'GET RATE FROM TABLE USING THE FOLLOWING
-    '                        '   TBIL_ANN_POL_PRM_RATE_CD
-    '                        '   TBIL_ANN_POL_PRM_PERIOD_YR
-    '                        '   TBIL_ANN_POLY_ASSRD_AGE
-
-    '                        '*Rate   -  TBIL_ANN_PRM_RT_RATE 
-    '                        'Rate per   - TBIL_ANN_PRM_RT_PER.
-
-    '                        'Calculate Annual Basic Premium as Follows.
-    '                        '	Annual Basic Prem = S.A multiplied by rate divided by Rate per.
-    '                        'Move Annual Basic Prem. Calculated to 
-    '                        '   TBIL_ANN_POL_PRM_DTL_BASIC_PRM_LC
-    '                        '   TBIL_ANN_POL_PRM_DTL_BASIC_PRM_FC
-
-    '                        dblPrem_Rate = 0
-    '                        dblRate_Per = 0
-    '                        dblSum_Assured_LC = 0
-    '                        dblSum_Assured_FC = 0
-
-
-    '                        If IsNumeric(Trim(Me.txtPrem_Rate.Text)) Then
-    '                            dblPrem_Rate = CType(Trim(Me.txtPrem_Rate.Text), Double)
-    '                        End If
-    '                        If IsNumeric(Trim(Me.txtPrem_Rate_Per.Text)) Then
-    '                            dblRate_Per = CType(Trim(Me.txtPrem_Rate_Per.Text), Integer)
-    '                        End If
-
-    '                        If Val(dblTmp_Amt) > 0 And Val(dblPrem_Rate) <> 0 And Val(dblRate_Per) <> 0 Then
-    '                            dblSum_Assured_LC = dblTmp_Amt * dblRate_Per / dblPrem_Rate
-    '                        End If
-
-    '                        dblSum_Assured_LC = Format(dblSum_Assured_LC, "###########0.00")
-    '                        dblSum_Assured_FC = dblSum_Assured_LC
-
-    '                        dblTmp_Amt = Format(dblTmp_Amt, "###########0.00")
-    '                        dblAnnual_Basic_Prem_LC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_LC.Text = dblAnnual_Basic_Prem_LC.ToString
-
-    '                        dblAnnual_Basic_Prem_FC = dblTmp_Amt
-    '                        'Me.txtCalc_Ann_Basic_Prem_FC.Text = dblAnnual_Basic_Prem_FC.ToString
-
-    '                    Case Else
-    '                        '*Rate   -  0 
-    '                        'Rate per   - 0.
-
-    '                End Select
-
-    '                GoTo Skip_C001
-
-    '        End Select
-
-
-    '        '******************************************************
-    '        ' END CODES - CALCULATE SUM ASSURED FROM PREMIUM
-    '        '******************************************************
-
-    'Skip_C001:
-
-
-    '        If objOLEConn.State = ConnectionState.Open Then
-    '            objOLEConn.Close()
-    '        End If
-    '        objOLEConn = Nothing
-
-    '        '******************************************************
-    '        ' END CODES - CALCULATE SUM ASSURED FROM PREMIUM
-    '        '******************************************************
-
-    '    End Sub
 
 
     Private Sub Proc_DoCalc_AddPrem(ByVal pv_objOLEConn As OleDbConnection)
@@ -2579,7 +1361,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
         objOLEDR = objOLECmd.ExecuteReader()
         If (objOLEDR.Read()) Then
             strErrMsg = "true"
-
+            '("TBIL_ANN_POL_PRM_RT_TAB_FIX") = Trim(Me.txtPrem_Rate_TypeNum.Text)
             Me.txtCover_Num.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_COVER_CD") & vbNullString, String))
             'Call gnProc_DDL_Get(Me.cboCover_Name, RTrim(Me.txtCover_Num.Text))
 
@@ -2613,8 +1395,8 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
             Call gnProc_DDL_Get(Me.cboPrem_SA_Currency, RTrim(Me.txtPrem_SA_CurrencyCode.Text))
             Me.txtPrem_Exchange_Rate.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_EXCHG_RATE") & vbNullString, String))
 
-            Me.txtPrem_Life_CoverNum.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_LIFE_COVER") & vbNullString, String))
-            Call gnProc_DDL_Get(Me.cboPrem_Life_Cover, RTrim(Me.txtPrem_Life_CoverNum.Text))
+            'Me.txtPrem_Life_CoverNum.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_LIFE_COVER") & vbNullString, String))
+            'Call gnProc_DDL_Get(Me.cboPrem_Life_Cover, RTrim(Me.txtPrem_Life_CoverNum.Text))
 
             Me.txtPrem_MOP_Rate.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_MOP_RATE") & vbNullString, String))
             Me.txtPrem_Exchange_Rate.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_EXCHG_RATE") & vbNullString, String))
@@ -2648,67 +1430,51 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                 Me.cboPrem_Rate_Code.Enabled = True
             End If
 
-            If IsNumeric(objOLEDR("TBIL_ANN_POL_PRM_SA_LC")) Then
-                txtPurchaseAnnuityLC.Text =Format(Ctype(objOLEDR("TBIL_ANN_POL_PRM_SA_LC"), Decimal), "N2")
-                txtPurchaseAnnuityFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PRM_SA_FC"), Decimal), "N2")
+            If IsNumeric(objOLEDR("TBIL_ANN_POL_PURCHASE_LC")) Then
+                txtPurchaseAnnuityLC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PURCHASE_LC"), Decimal), "N2")
+                txtPurchaseAnnuityFC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PURCHASE_FC"), Decimal), "N2")
             End If
 
-            If IsNumeric(objOLEDR("TBIL_ANN_POL_PURCHASE_LC")) Then
-                txtAnnualAnnuityLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PURCHASE_LC"), Decimal), "N2")
-                txtAnnualAnnuityFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PURCHASE_FC"), Decimal), "N2")
-            End If
+            'If IsNumeric(objOLEDR("TBIL_ANN_POL_PURCHASE_LC")) Then
+            '    txtAnnualAnnuityLC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PURCHASE_LC"), Decimal), "N2")
+            '    txtAnnualAnnuityFC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PURCHASE_FC"), Decimal), "N2")
+            'End If
             If Not IsNumeric(CType(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_LC") & vbNullString, String)) Then
 
             Else
-                txtPremiumWithLumpSumLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_LC"), Decimal), "N2")
-                txtPremiumWithLumpSumFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_FC"), Decimal), "N2")
+                txtPremiumWithLumpSumLC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_LC"), Decimal), "N2")
+                txtPremiumWithLumpSumFC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PREM_WITH_LS_FC"), Decimal), "N2")
             End If
 
             If Not IsNumeric(CType(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_LC") & vbNullString, String)) Then
             Else
 
-                txtPremiumWithoutLumpSumLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_LC"), Decimal), "N2")
-                txtPremiumWithoutLumpSumFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_FC"), Decimal), "N2")
+                txtPremiumWithoutLumpSumLC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_LC"), Decimal), "N2")
+                txtPremiumWithoutLumpSumFC.Text = Format(CType(objOLEDR("TBIL_ANN_POL_PREM_WITHOUT_LS_FC"), Decimal), "N2")
             End If
             If Not IsNumeric(CType(objOLEDR("TBIL_ANN_ANNUAL_LC") & vbNullString, String)) Then
             Else
 
-                txtAnnualAnnuityLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_ANNUAL_LC"), Decimal), "N2")
-                txtAnnualAnnuityFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_ANNUAL_FC"), Decimal), "N2")
+                txtAnnualAnnuityLC.Text = Format(CType(objOLEDR("TBIL_ANN_ANNUAL_LC"), Decimal), "N2")
+                txtAnnualAnnuityFC.Text = Format(CType(objOLEDR("TBIL_ANN_ANNUAL_FC"), Decimal), "N2")
             End If
             If Not IsNumeric(CType(objOLEDR("TBIL_ANN_MONTHLY_LC") & vbNullString, String)) Then
             Else
 
-                txtMonthlyAnnuityLC.Text = Format(Ctype(objOLEDR("TBIL_ANN_MONTHLY_LC"), Decimal), "N2")
-                txtMonthlyAnnuityFC.Text = Format(Ctype(objOLEDR("TBIL_ANN_MONTHLY_FC"), Decimal), "N2")
+                txtMonthlyAnnuityLC.Text = Format(CType(objOLEDR("TBIL_ANN_MONTHLY_LC"), Decimal), "N2")
+                txtMonthlyAnnuityFC.Text = Format(CType(objOLEDR("TBIL_ANN_MONTHLY_FC"), Decimal), "N2")
             End If
 
             Me.txtPrem_Fixed_Rate_PerNum.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RT_FIX_PER") & vbNullString, String))
             Call gnProc_DDL_Get(Me.cboPrem_Fixed_Rate_Per, RTrim(Me.txtPrem_Fixed_Rate_PerNum.Text))
-            txtProductClass.Text=RTrim(CType(objOLEDR("TBIL_ANN_PRDCT_DTL_CAT") & vbNullString, String))
-            txtProduct_Num.Text=RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_PRDCT_CD") & vbNullString, String))
-            
+            txtProductClass.Text = RTrim(CType(objOLEDR("TBIL_ANN_PRDCT_DTL_CAT") & vbNullString, String))
+            txtProduct_Num.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_PRDCT_CD") & vbNullString, String))
+
             Me.txtPrem_Rate_Code.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RATE_CD") & vbNullString, String))
             Call gnProc_DDL_Get(Me.cboPrem_Rate_Code, RTrim(Me.txtPrem_Rate_Code.Text))
             Me.txtPrem_Rate.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RATE") & vbNullString, String))
             Me.txtPrem_Rate_Per.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RATE_PER") & vbNullString, String))
 
-            'Me.txtAnnualAnnuityLC.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_ANN_CONTRIB_LC") & vbNullString, String))
-            'Me.txtAnnualAnnuityFC.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_ANN_CONTRIB_FC") & vbNullString, String))
-
-            'Me.txtMonthlyAnnuityLC.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_MTH_CONTRIB_LC") & vbNullString, String))
-            'Me.txtMonthlyAnnuityFC.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_MTH_CONTRIB_FC") & vbNullString, String))
-
-            Me.txtPrem_Bonus_YN.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RT_BONUS_CD") & vbNullString, String))
-            Call gnProc_DDL_Get(Me.cboPrem_Bonus_YN, RTrim(Me.txtPrem_Bonus_YN.Text))
-
-            Me.txtPrem_Allocation_YN.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_ALLOC_CD") & vbNullString, String))
-            Call gnProc_DDL_Get(Me.cboPrem_Allocation_YN, RTrim(Me.txtPrem_Allocation_YN.Text))
-
-            Me.txtPrem_Discount_Rate.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_DISCNT_PCENT") & vbNullString, String))
-            Me.txtPrem_Loading_Rate.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_LOAD_PCENT") & vbNullString, String))
-
-            Me.txtPrem_Enrollee_Num.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_ENROL_NO") & vbNullString, String))
 
             Me.lblFileNum.Enabled = False
             'Call DisableBox(Me.txtFileNum)
@@ -2776,7 +1542,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
 
 
     Protected Sub txtPurchaseAnnuityLC_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPurchaseAnnuityLC.TextChanged
-        If txtPurchaseAnnuityLC.Text <> "" And txtPrem_Fixed_Rate.Text <> "" And cboPrem_Fixed_Rate_Per.SelectedIndex <> 0 Then
+        If txtPurchaseAnnuityLC.Text <> "" Then
             Dim pAnn As String = Format(CType(txtPurchaseAnnuityLC.Text, Decimal), "N2")
             'Format(CType(annualAnnuity, Decimal), "N2")
             txtPurchaseAnnuityLC.Text = CType(pAnn, String)
@@ -2801,5 +1567,8 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
         End If
     End Sub
 
-  
+
+    Protected Sub cboPrem_Rate_Code_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboPrem_Rate_Code.SelectedIndexChanged
+
+    End Sub
 End Class
