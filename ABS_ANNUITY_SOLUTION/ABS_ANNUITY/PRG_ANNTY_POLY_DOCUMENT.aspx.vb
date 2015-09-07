@@ -238,7 +238,7 @@ Partial Class PRG_ANNTY_POLY_DOCUMENT
         'rParams(10) = CType(Session("MyUserIDX"), String) + "&"
 
         Session("ReportParams") = rParams
-        Response.Redirect("../PrintView.aspx")
+        Response.Redirect("PrintView.aspx")
         ' Response.Redirect("PrintView.aspx")
     End Sub
 
