@@ -136,7 +136,7 @@ Partial Class WebForm3
                 strSQL = strSQL & "SELECT TBIL_INSRD_REC_ID AS MyFld_Rec_ID, TBIL_INSRD_ID AS MyFld_ID, TBIL_INSRD_CODE AS MyFld_Value"
                 strSQL = strSQL & ",RTRIM(ISNULL(TBIL_INSRD_SURNAME,'')) + ' ' + RTRIM(ISNULL(TBIL_INSRD_FIRSTNAME,'')) AS MyFld_Text"
                 strSQL = strSQL & " FROM " & strTable & " "
-                strSQL = strSQL & " WHERE TBIL_INSRD_ID = '" & RTrim(pvID) & "'"
+                strSQL = strSQL & " WHERE TBIL_INSRD_ID = '" & RTrim(pvID) & "'"                
                 If RTrim(Me.txtSearch.Value) = "Search..." Then
                 ElseIf RTrim(Me.txtSearch.Value) <> "" Then
                     strSQL = strSQL & " AND (TBIL_INSRD_SURNAME LIKE '%" & RTrim(Me.txtSearch.Value) & "%'"

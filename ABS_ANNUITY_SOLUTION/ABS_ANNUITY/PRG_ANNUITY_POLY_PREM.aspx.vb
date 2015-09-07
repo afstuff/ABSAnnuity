@@ -917,7 +917,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                                 rate = CType(Trim(Me.txtPrem_Fixed_Rate.Text), Double)
                             End If
                         Else
-                            Me.lblMsg.Text = "Missing or Invalid date - " & Me.lblPrem_Start_Date.Text
+                            Me.lblMsg.Text = "Missing Fixed Rate"
                             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
                             Exit Sub
                         End If
@@ -926,7 +926,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                                 purchaseAmount = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
                             End If
                         Else
-                            Me.lblMsg.Text = "Missing - " & Me.lblPrem_Start_Date.Text
+                            Me.lblMsg.Text = "Missing Purchase Ammount"
                             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
                             Exit Sub
                         End If
@@ -935,7 +935,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                                 purchaseAmount = CType(Trim(txtPurchaseAnnuityLC.Text), Double)
                             End If
                         Else
-                            Me.lblMsg.Text = "Missing  - " & Me.lblPrem_Start_Date.Text
+                            Me.lblMsg.Text = "Missing Purchase Ammount"
                             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
                             Exit Sub
                         End If
@@ -944,7 +944,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                                 ratePer = CType(Trim(cboPrem_Fixed_Rate_Per.SelectedValue), Double)
                             End If
                         Else
-                            Me.lblMsg.Text = "Missing  - " & Me.lblPrem_Start_Date.Text
+                            Me.lblMsg.Text = "Missing Fixed Rate Per"
                             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
                             Exit Sub
                         End If
