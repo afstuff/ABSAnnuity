@@ -864,7 +864,7 @@ Partial Class PRG_ANNTY_POLY_CONVERT
         End If
     End Sub
     Private Function GetPremiumPayment(ByVal proposalNo As String) As Double
-        Dim PremiumPayment As Double = 0.0
+        Dim AnnuityPurchase As Double = 0.0
         Dim OverridingCommTotal As Double = 0.0
         Dim PaymentMode As String
         Dim mystrCONN As String = CType(Session("connstr"), String)
@@ -902,7 +902,7 @@ Partial Class PRG_ANNTY_POLY_CONVERT
                     dr = obj_DT.Rows(i)
                     If Not IsDBNull(dr("TBIL_ANN_POL_PRM_MODE_PAYT")) Then
                         PaymentMode = dr("TBIL_ANN_POL_PRM_MODE_PAYT")
-
+                        AnnuityPurchase = dr("TBIL_ANN_POL_PURCHASE_LC")
                         If PaymentMode = "Y" Then
                             'PremiumPayment = dr("TBIL_ANN_POL_PRM_ANN_CONTRIB_LC")
                         ElseIf PaymentMode = "M" Then
@@ -943,7 +943,7 @@ Partial Class PRG_ANNTY_POLY_CONVERT
             objOLEConn.Close()
         End If
         objOLEConn = Nothing
-        Return PremiumPayment
+        Return AnnuityPurchase
     End Function
 
     Protected Sub cboSearch_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboSearch.SelectedIndexChanged
