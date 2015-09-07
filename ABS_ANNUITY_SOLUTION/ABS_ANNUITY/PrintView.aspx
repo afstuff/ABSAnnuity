@@ -29,7 +29,7 @@
                         OnClientClick="javascript:history.go(-1);" />
         </div>
         <div id="PrintDialog">
-            
+            <!-- Modified the Image url-->
             <iframe id="frReport" scrolling="auto" width="1000px" height="500px" 
             src=<%=ReportURL%> > </iframe>
 

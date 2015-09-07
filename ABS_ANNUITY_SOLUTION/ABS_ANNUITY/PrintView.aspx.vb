@@ -13,6 +13,7 @@ Partial Class PrintView
 
         If Not Page.IsPostBack Then
             rParams = CType(Session("ReportParams"), String())
+            'Modified the image path
             ReportURL = "Images/ABS_Print_Canvas_02.jpg"
 
         Else
