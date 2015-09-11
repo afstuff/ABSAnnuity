@@ -1571,4 +1571,10 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
     Protected Sub cboPrem_Rate_Code_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboPrem_Rate_Code.SelectedIndexChanged
 
     End Sub
+
+    Protected Sub txtPremiumWithLumpSumLC_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPremiumWithLumpSumLC.TextChanged
+        If txtPremiumWithLumpSumLC.Text <> String.Empty And IsNumeric(txtPremiumWithLumpSumLC.Text) Then
+            txtPremiumWithLumpSumFC.Text = txtPremiumWithLumpSumLC.Text
+        End If
+    End Sub
 End Class

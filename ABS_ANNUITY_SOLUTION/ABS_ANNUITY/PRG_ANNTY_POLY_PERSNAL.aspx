@@ -390,32 +390,6 @@ function cmdPfa_Browse_onclick() {
                                     &nbsp;<asp:TextBox ID="txtRelationName" Visible="false" Enabled="false" Width="40px" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
-                            <tr>
-                                <td align="left" valign="top" colspan="1">
-                                    <asp:Label ID="lblHeight" Text="Height:" runat="server"></asp:Label></td>
-                                <td align="left" valign="top" colspan="1">
-                                    <asp:TextBox ID="txtHeight" Enabled="true" MaxLength="5" Width="40px" runat="server"></asp:TextBox>
-                                    &nbsp;<asp:DropDownList ID="cboHeight" Width="100px" runat="server">
-                                        <asp:ListItem Selected="True" Value="*">(Select item)</asp:ListItem>
-                                        <asp:ListItem Value="F">Feet</asp:ListItem>
-                                        <asp:ListItem Value="M">Meters</asp:ListItem>
-                                    </asp:DropDownList>
-                                    &nbsp;<asp:TextBox ID="txtHeight_Type" Visible="false" Enabled="true" MaxLength="2" Width="40px" runat="server"></asp:TextBox>
-                                    &nbsp;<asp:TextBox ID="txtHeight_TypeName" Visible="false" Enabled="true" Width="40px" runat="server"></asp:TextBox>
-                                </td>
-                                <td align="left" valign="top" colspan="1">
-                                    <asp:Label ID="lblWeight" Text="Weight:" runat="server"></asp:Label></td>
-                                <td align="left" valign="top" colspan="1">
-                                    <asp:TextBox ID="txtWeight" Enabled="true" MaxLength="5" Width="40px" runat="server"></asp:TextBox>
-                                    &nbsp;<asp:DropDownList ID="cboWeight" Width="100px" runat="server">
-                                        <asp:ListItem Selected="True" Value="*">(Select item)</asp:ListItem>
-                                        <asp:ListItem Value="K">Kilo</asp:ListItem>
-                                        <asp:ListItem Value="P">Pound</asp:ListItem>
-                                    </asp:DropDownList>
-                                    &nbsp;<asp:TextBox ID="txtWeight_Type" Visible="false" Enabled="true" MaxLength="2" Width="40px" runat="server"></asp:TextBox>
-                                    &nbsp;<asp:TextBox ID="txtWeight_TypeName" Visible="false" Enabled="true" Width="40px" runat="server"></asp:TextBox>
-                                </td>
-                            </tr>
 
                             <tr>
                                 <td align="left" colspan="4" valign="top" class="myMenu_Title">Business Source Info</td>

@@ -1338,9 +1338,7 @@ Proc_Skip_Check:
 
         Call DoGet_SelectedItem(Me.cboRelation, Me.txtRelation, Me.txtRelationName, Me.lblMsg)
 
-        Call DoGet_SelectedItem(Me.cboHeight, Me.txtHeight_Type, Me.txtHeight_TypeName, Me.lblMsg)
-
-        Call DoGet_SelectedItem(Me.cboWeight, Me.txtWeight_Type, Me.txtWeight_TypeName, Me.lblMsg)
+       
 
         Call DoGet_SelectedItem(Me.cboBranch, Me.txtBraNum, Me.txtBraName, Me.lblMsg)
         If Me.txtBraNum.Text = "" Then
@@ -1598,10 +1596,7 @@ Proc_Skip_Check:
                     'drNewRow("TBIL_ANN_POLY_ASSRD_AGE") = Trim(Me.txtDOB_ANB.Text)
                 End If
 
-                drNewRow("TBIL_ANN_POLY_ASSRD_HEIGHT") = Trim(Me.txtHeight.Text)
-                drNewRow("TBIL_ANN_POLY_ASSRD_WEIGHT") = Trim(Me.txtWeight.Text)
-                drNewRow("TBIL_ANN_POLY_ASSRD_HEIGHT_TYP") = Trim(Me.txtHeight_Type.Text)
-                drNewRow("TBIL_ANN_POLY_ASSRD_WEIGHT_TYP") = Trim(Me.txtWeight_Type.Text)
+  
 
                 drNewRow("TBIL_ANN_POLY_AGE_PROOF") = Trim(Me.txtDOB_Proof.Text)
                 drNewRow("TBIL_ANN_POLY_ASSRD_AGE") = Val(Trim(Me.txtDOB_ANB.Text))
@@ -1690,10 +1685,7 @@ Proc_Skip_Check:
                         '.Rows(0)("TBIL_ANN_POLY_ASSRD_AGE") = Trim(Me.txtDOB_ANB.Text)
                     End If
 
-                    .Rows(0)("TBIL_ANN_POLY_ASSRD_HEIGHT") = Trim(Me.txtHeight.Text)
-                    .Rows(0)("TBIL_ANN_POLY_ASSRD_WEIGHT") = Trim(Me.txtWeight.Text)
-                    .Rows(0)("TBIL_ANN_POLY_ASSRD_HEIGHT_TYP") = Trim(Me.txtHeight_Type.Text)
-                    .Rows(0)("TBIL_ANN_POLY_ASSRD_WEIGHT_TYP") = Trim(Me.txtWeight_Type.Text)
+                
 
                     .Rows(0)("TBIL_ANN_POLY_AGE_PROOF") = Trim(Me.txtDOB_Proof.Text)
                     .Rows(0)("TBIL_ANN_POLY_ASSRD_AGE") = Val(Trim(Me.txtDOB_ANB.Text))
@@ -1909,12 +1901,7 @@ PUpdate_Date1:
             Me.txtDeptNum.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_DEPT_CD") & vbNullString, String))
             Call gnProc_DDL_Get(Me.cboDepartment, RTrim(Me.txtDeptNum.Text))
 
-            Me.txtHeight.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_ASSRD_HEIGHT") & vbNullString, String))
-            Me.txtWeight.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_ASSRD_WEIGHT") & vbNullString, String))
-            Me.txtHeight_Type.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_ASSRD_HEIGHT_TYP") & vbNullString, String))
-            Call gnProc_DDL_Get(Me.cboHeight, RTrim(Me.txtHeight_Type.Text))
-            Me.txtWeight_Type.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_ASSRD_WEIGHT_TYP") & vbNullString, String))
-            Call gnProc_DDL_Get(Me.cboWeight, RTrim(Me.txtWeight_Type.Text))
+           
 
 
             If IsDate(objOLEDR("TBIL_ANN_POLY_RETIREMENT_DATE")) Then

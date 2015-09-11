@@ -346,7 +346,7 @@
                                 <asp:Label ID="Label3" ToolTip="LC=Local Currency" Text="Premium With Lump Sum LC:" runat="server"></asp:Label>
                             </td>
                             <td align="left" valign="top">
-                                <asp:TextBox ID="txtPremiumWithLumpSumLC" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtPremiumWithLumpSumLC" runat="server" AutoPostBack="True"></asp:TextBox>
                             </td>
                             <td align="left" valign="top">
                                 <asp:Label ID="Label4" ToolTip="FC=Foreign Currency" Text="Premium With Lump Sum FC:" runat="server"></asp:Label>
