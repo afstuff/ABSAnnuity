@@ -227,7 +227,7 @@ Partial Class PRG_ANNTY_POLY_DOCUMENT
         End If
         rParams(0) = rblTransType.SelectedValue.Trim
         rParams(1) = "pPolicyNo="
-        rParams(2) = txtPol_Num.Text + "&"
+        rParams(2) = txtFileNum.Text + "&"
         rParams(3) = "pParam1="
         rParams(4) = "null&"
         rParams(5) = "pParam2="
