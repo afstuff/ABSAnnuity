@@ -34,51 +34,69 @@ Partial Class PRG_ANN_PFA_DTL
         Dim strMyVal As String
 
         If LTrim(RTrim(Me.txtTBIL_PFA_CODE.Text)) = "" Then
-            Me.lblMessage.Text = "Incorrect/Invalid/Empty Email Field!"
+            Me.lblMessage.Text = "Incorrect/Invalid/PFA Code Field!"
             FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
             Exit Sub
         End If
 
-        If LTrim(RTrim(Me.txtTBIL_PFA_CATG.Text)) = "" Then
-            Me.lblMessage.Text = "Incorrect/Invalid/Empty Category Field!"
-            FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
-            Exit Sub
-        End If
+        'If LTrim(RTrim(Me.txtTBIL_PFA_CATG.Text)) = "" Then
+        '    Me.lblMessage.Text = "Incorrect/Invalid/Empty Category Field!"
+        '    FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
+        '    Exit Sub
+        'End If
 
         If LTrim(RTrim(Me.txtTBIL_PFA_DESC.Text)) = "" Then
-            Me.lblMessage.Text = "Incorrect/Invalid/Empty Description Field!"
+            Me.lblMessage.Text = "Incorrect/Invalid/PFA Description Field!"
             FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
             Exit Sub
         End If
 
         If LTrim(RTrim(Me.txtTBIL_PFA_SHRT_DESC.Text)) = "" Then
-            Me.lblMessage.Text = "Incorrect/Invalid/Empty Short Description Field!"
+            Me.lblMessage.Text = "Incorrect/Invalid/PFA Short Description Field!"
             FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
             Exit Sub
         End If
 
         If LTrim(RTrim(Me.txtTBIL_PFA_BRANCH.Text)) = "" Then
-            Me.lblMessage.Text = "Incorrect/Invalid/Empty Branch Field!"
+            Me.lblMessage.Text = "Incorrect/Invalid/PFA Branch Field!"
             FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
             Exit Sub
         End If
 
         If LTrim(RTrim(Me.txtTBIL_PFA_ADRES1.Text)) = "" Then
-            Me.lblMessage.Text = "Incorrect/Invalid/Empty Address 1 Field!"
+            Me.lblMessage.Text = "Incorrect/Invalid/PFA Address 1 Field!"
             FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
             Exit Sub
         End If
 
         If LTrim(RTrim(Me.txtTBIL_PFA_PHONE1.Text)) = "" Then
-            Me.lblMessage.Text = "Incorrect/Invalid/Empty Phone 1 Field!"
-            FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
-            Exit Sub
+            'Me.lblMessage.Text = "Incorrect/Invalid/PFA Phone 1 Field!"
+            'FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
+            'Exit Sub
+            txtTBIL_PFA_PHONE1.Text = "N/A"
+        End If
+
+        If LTrim(RTrim(Me.txtTBIL_PFA_PHONE2.Text)) = "" Then
+            'Me.lblMessage.Text = "Incorrect/Invalid/PFA Phone 1 Field!"
+            'FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
+            'Exit Sub
+            txtTBIL_PFA_PHONE2.Text = "N/A"
         End If
 
         If LTrim(RTrim(Me.txtTBIL_PFA_EMAIL1.Text)) = "" Then
-            Me.lblMessage.Text = "Incorrect/Invalid/Empty Email 1 Field!"
-            FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
-            Exit Sub
+            'Me.lblMessage.Text = "Incorrect/Invalid/PFA Email 1 Field!"
+            'FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
+            'Exit Sub
+
+            txtTBIL_PFA_EMAIL1.Text = "N/A"
+        End If
+
+        If LTrim(RTrim(Me.txtTBIL_PFA_EMAIL2.Text)) = "" Then
+            'Me.lblMessage.Text = "Incorrect/Invalid/PFA Email 1 Field!"
+            'FirstMsg = "Javascript:alert('" & Me.lblMessage.Text & "')"
+            'Exit Sub
+
+            txtTBIL_PFA_EMAIL2.Text = "N/A"
         End If
 
 
@@ -194,14 +212,16 @@ Partial Class PRG_ANN_PFA_DTL
                 'drNewRow("TBIL_PFA_MDLE") = RTrim(Me.txtt.Text)
                 'drNewRow("TBIL_PFA_CATG") = RTrim(Me.txtTBIL_PFA_CATG.Text)
 
-                drNewRow("TBIL_PFA_DESC") = Left(RTrim(Me.txtTBIL_PFA_DESC.Text), 49)
+                drNewRow("TBIL_PFA_DESC") = Me.txtTBIL_PFA_DESC.Text.Trim()
+                drNewRow("TBIL_PFA_SHRT_DESC") = Me.txtTBIL_PFA_SHRT_DESC.Text.Trim()
 
-                drNewRow("TBIL_PFA_ADRES1") = Left(LTrim(Me.txtTBIL_PFA_ADRES1.Text), 39)
-                drNewRow("TBIL_PFA_ADRES2") = Left(LTrim(Me.txtTBIL_PFA_ADRES2.Text), 39)
-                drNewRow("TBIL_PFA_PHONE1") = Left(LTrim(Me.txtTBIL_PFA_PHONE1.Text), 11)
-                drNewRow("TBIL_PFA_PHONE2") = Left(LTrim(Me.txtTBIL_PFA_PHONE2.Text), 11)
-                drNewRow("TBIL_PFA_EMAIL1") = Left(LTrim(Me.txtTBIL_PFA_EMAIL1.Text), 49)
-                drNewRow("TBIL_PFA_EMAIL2") = Left(LTrim(Me.txtTBIL_PFA_EMAIL2.Text), 49)
+                drNewRow("TBIL_PFA_ADRES1") = Me.txtTBIL_PFA_ADRES1.Text.Trim()
+                drNewRow("TBIL_PFA_ADRES2") = Me.txtTBIL_PFA_ADRES2.Text.Trim()
+                drNewRow("TBIL_PFA_BRANCH") = Me.txtTBIL_PFA_BRANCH.Text.Trim()
+                drNewRow("TBIL_PFA_PHONE1") = Me.txtTBIL_PFA_PHONE1.Text.Trim()
+                drNewRow("TBIL_PFA_PHONE2") = Me.txtTBIL_PFA_PHONE2.Text.Trim()
+                drNewRow("TBIL_PFA_EMAIL1") = Me.txtTBIL_PFA_EMAIL1.Text.Trim()
+                drNewRow("TBIL_PFA_EMAIL2") = Me.txtTBIL_PFA_EMAIL2.Text.Trim()
 
                 drNewRow("TBIL_PFA_FLAG") = "A"
                 drNewRow("TBIL_PFA_OPERID") = CType(myUserIDX, String)
@@ -224,14 +244,16 @@ Partial Class PRG_ANN_PFA_DTL
                     'drNewRow("TBIL_PFA_MDLE") = RTrim(Me.txtt.Text)
                     '.Rows(0)("TBIL_PFA_CATG") = RTrim(Me.txtTBIL_PFA_CATG.Text)
 
-                    .Rows(0)("TBIL_PFA_DESC") = Left(RTrim(Me.txtTBIL_PFA_DESC.Text), 49)
+                    .Rows(0)("TBIL_PFA_DESC") = Me.txtTBIL_PFA_DESC.Text.Trim()
+                    .Rows(0)("TBIL_PFA_SHRT_DESC") = Me.txtTBIL_PFA_SHRT_DESC.Text.Trim()
+                    .Rows(0)("TBIL_PFA_BRANCH") = Me.txtTBIL_PFA_BRANCH.Text.Trim()
+                    .Rows(0)("TBIL_PFA_ADRES1") = Me.txtTBIL_PFA_ADRES1.Text.Trim()
+                    .Rows(0)("TBIL_PFA_ADRES2") = Me.txtTBIL_PFA_ADRES2.Text.Trim()
+                    .Rows(0)("TBIL_PFA_PHONE1") = Me.txtTBIL_PFA_PHONE1.Text.Trim()
+                    .Rows(0)("TBIL_PFA_PHONE2") = Me.txtTBIL_PFA_PHONE2.Text.Trim()
+                    .Rows(0)("TBIL_PFA_EMAIL1") = Me.txtTBIL_PFA_EMAIL1.Text.Trim()
+                    .Rows(0)("TBIL_PFA_EMAIL2") = Me.txtTBIL_PFA_EMAIL2.Text.Trim()
 
-                    .Rows(0)("TBIL_PFA_ADRES1") = Left(LTrim(Me.txtTBIL_PFA_ADRES1.Text), 39)
-                    .Rows(0)("TBIL_PFA_ADRES2") = Left(LTrim(Me.txtTBIL_PFA_ADRES2.Text), 39)
-                    .Rows(0)("TBIL_PFA_PHONE1") = Left(LTrim(Me.txtTBIL_PFA_PHONE1.Text), 11)
-                    .Rows(0)("TBIL_PFA_PHONE2") = Left(LTrim(Me.txtTBIL_PFA_PHONE2.Text), 11)
-                    .Rows(0)("TBIL_PFA_EMAIL1") = Left(LTrim(Me.txtTBIL_PFA_EMAIL1.Text), 49)
-                    .Rows(0)("TBIL_PFA_EMAIL2") = Left(LTrim(Me.txtTBIL_PFA_EMAIL2.Text), 49)
                     .Rows(0)("TBIL_PFA_FLAG") = "C"
                 End With
 
@@ -375,6 +397,117 @@ Partial Class PRG_ANN_PFA_DTL
         'Call Proc_OpenRecord(Me.txtCustNum.Text)
 
         lblMessage.Text = "You selected " & Me.txtTBIL_PFA_DESC.Text & " / " & Me.txtPfaID.Text & "."
+
+    End Sub
+
+    Protected Sub cmdSearch_Click(sender As Object, e As EventArgs) Handles cmdSearch.Click
+        'search for registered pfa under ANNUITY
+        If txtSearch.Value <> "" Then
+            Dim sText As String = txtSearch.Value
+            Proc_SearchPfa(sText)
+        Else
+            Exit Sub
+        End If
+
+
+    End Sub
+
+    Private Sub Proc_SearchPfa(ByVal sVal As String)
+
+        strTable = "TBIL_PFA_DETAIL"
+        strSQL = "SELECT *, RTRIM(ISNULL(TBIL_PFA_DESC,'')) AS TBIL_PFA_FULL_NAME FROM " & strTable & " where TBIL_PFA_DESC like '" & sVal.Trim & "%' or (TBIL_PFA_CODE like '" & sVal.Trim & "%') or (TBIL_PFA_SHRT_DESC like '" & sVal.Trim & "%') ORDER BY TBIL_PFA_DESC"
+
+        Dim mystrCONN As String = CType(Session("connstr"), String)
+        Dim objOLEConn As New OleDbConnection(mystrCONN)
+
+        Dim cmd As OleDbCommand = New OleDbCommand()
+        cmd.Connection = objOLEConn
+        cmd.CommandText = strSQL
+        cmd.CommandType = CommandType.Text
+
+        Try
+            objOLEConn.Open()
+            Dim adapter As OleDbDataAdapter = New OleDbDataAdapter()
+            adapter.SelectCommand = cmd
+            Dim ds As DataSet = New DataSet()
+            adapter.Fill(ds)
+            objOLEConn.Close()
+
+            Dim dt As DataTable = ds.Tables(0)
+            Dim dr As DataRow = dt.NewRow()
+            dr("TBIL_PFA_FULL_NAME") = "-- Selecct --"
+            dr("TBIL_PFA_CODE") = ""
+            dt.Rows.InsertAt(dr, 0)
+
+            cbo_PfaName.DataSource = dt
+            cbo_PfaName.DataTextField = "TBIL_PFA_FULL_NAME"
+            cbo_PfaName.DataValueField = "TBIL_PFA_CODE"
+            cbo_PfaName.DataBind()
+
+        Catch ex As Exception
+            '_rtnMessage = "Entry failed! " + ex.Message.ToString()
+
+        End Try
+
+    End Sub
+
+    Protected Sub cbo_PfaName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbo_PfaName.SelectedIndexChanged
+        If cbo_PfaName.SelectedIndex <> 0 Then
+            Proc_GetPfa(cbo_PfaName.SelectedValue)
+            'txtPfa_Search.Text = ""
+            cbo_PfaName.SelectedIndex = 0
+        End If
+    End Sub
+
+    Private Sub Proc_GetPfa(ByVal sVal As String)
+
+        strTable = "TBIL_PFA_DETAIL"
+        strSQL = "SELECT *, RTRIM(ISNULL(TBIL_PFA_DESC,'')) AS TBIL_PFA_FULL_NAME FROM " & strTable & " where TBIL_PFA_CODE = '" & sVal.Trim & "'"
+
+        Dim mystrCONN As String = CType(Session("connstr"), String)
+        Dim objOLEConn As New OleDbConnection(mystrCONN)
+
+        Dim cmd As OleDbCommand = New OleDbCommand()
+        cmd.Connection = objOLEConn
+        cmd.CommandText = strSQL
+        cmd.CommandType = CommandType.Text
+
+        Try
+            objOLEConn.Open()
+            Dim adapter As OleDbDataAdapter = New OleDbDataAdapter()
+            adapter.SelectCommand = cmd
+            Dim ds As DataSet = New DataSet()
+            adapter.Fill(ds)
+            objOLEConn.Close()
+
+            Dim dt As DataTable = ds.Tables(0)
+            For Each dr As DataRow In dt.Rows
+                txtPfaID.Text = dr("TBIL_PFA_REC_ID").ToString()
+                txtTBIL_PFA_CODE.Text = dr("TBIL_PFA_CODE").ToString()
+                txtTBIL_PFA_DESC.Text = dr("TBIL_PFA_DESC").ToString()
+                txtTBIL_PFA_SHRT_DESC.Text = dr("TBIL_PFA_SHRT_DESC").ToString()
+                txtTBIL_PFA_BRANCH.Text = dr("TBIL_PFA_BRANCH").ToString()
+                txtTBIL_PFA_ADRES1.Text = dr("TBIL_PFA_ADRES1").ToString()
+                txtTBIL_PFA_ADRES2.Text = dr("TBIL_PFA_ADRES2").ToString()
+                txtTBIL_PFA_PHONE1.Text = dr("TBIL_PFA_PHONE1").ToString()
+                txtTBIL_PFA_PHONE2.Text = dr("TBIL_PFA_PHONE2").ToString()
+                txtTBIL_PFA_EMAIL1.Text = dr("TBIL_PFA_EMAIL1").ToString()
+                txtTBIL_PFA_EMAIL2.Text = dr("TBIL_PFA_EMAIL2").ToString()
+            Next
+
+
+        Catch ex As Exception
+            '_rtnMessage = "Entry failed! " + ex.Message.ToString()
+
+        End Try
+
+    End Sub
+
+
+    Protected Sub PageAnchor_Return_Link_ServerClick(sender As Object, e As EventArgs) Handles PageAnchor_Return_Link.ServerClick
+        'me.dispose()
+        Dim closeScript As String = "<script language='javascript'> window.close() </script>"
+        lblMessage.Text = closeScript
 
     End Sub
 End Class

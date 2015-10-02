@@ -146,7 +146,7 @@ Partial Class PRG_ANNTY_POLY_PERSNAL
     Private Sub Proc_SearchPfa(ByVal sVal As String)
 
         strTable = "TBIL_PFA_DETAIL"
-        strSQL = "SELECT *, RTRIM(ISNULL(TBIL_PFA_DESC,'')) AS TBIL_PFA_FULL_NAME FROM " & strTable & " where TBIL_PFA_DESC like '" & sVal.Trim & "%' or (TBIL_PFA_CODE like '" & sVal.trim & "%') or (TBIL_PFA_SHRT_DESC like '" & sVal.trim & "%') ORDER BY TBIL_PFA_DESC"
+        strSQL = "SELECT *, RTRIM(ISNULL(TBIL_PFA_DESC,'')) AS TBIL_PFA_FULL_NAME FROM " & strTable & " where TBIL_PFA_DESC like '" & sVal.Trim & "%' or (TBIL_PFA_CODE like '" & sVal.Trim & "%') or (TBIL_PFA_SHRT_DESC like '" & sVal.Trim & "%') ORDER BY TBIL_PFA_DESC"
 
         Dim mystrCONN As String = CType(Session("connstr"), String)
         Dim objOLEConn As New OleDbConnection(mystrCONN)
@@ -185,7 +185,7 @@ Partial Class PRG_ANNTY_POLY_PERSNAL
     Private Sub Proc_GetPfa(ByVal sVal As String)
 
         strTable = "TBIL_PFA_DETAIL"
-        strSQL = "SELECT *, RTRIM(ISNULL(TBIL_PFA_DESC,'')) AS TBIL_PFA_FULL_NAME FROM " & strTable & " where TBIL_PFA_CODE = '" & sVal.trim & "'"
+        strSQL = "SELECT *, RTRIM(ISNULL(TBIL_PFA_DESC,'')) AS TBIL_PFA_FULL_NAME FROM " & strTable & " where TBIL_PFA_CODE = '" & sVal.Trim & "'"
 
         Dim mystrCONN As String = CType(Session("connstr"), String)
         Dim objOLEConn As New OleDbConnection(mystrCONN)
@@ -1321,7 +1321,8 @@ Proc_Skip_Check:
         End If
 
         If Dte_System.Month > Dte_DOB.Month Then
-            lngDOB_ANB = lngDOB_ANB + 1
+            'lngDOB_ANB = lngDOB_ANB + 1
+            lngDOB_ANB = lngDOB_ANB
         End If
         Me.txtDOB_ANB.Text = Trim(Str(lngDOB_ANB))
         'Dte_Maturity = CStr(DateAdd("yyyy", Val(Me.txtDuration.Text), Dte_Commence))
@@ -1338,7 +1339,7 @@ Proc_Skip_Check:
 
         Call DoGet_SelectedItem(Me.cboRelation, Me.txtRelation, Me.txtRelationName, Me.lblMsg)
 
-       
+
 
         Call DoGet_SelectedItem(Me.cboBranch, Me.txtBraNum, Me.txtBraName, Me.lblMsg)
         If Me.txtBraNum.Text = "" Then
@@ -1596,7 +1597,7 @@ Proc_Skip_Check:
                     'drNewRow("TBIL_ANN_POLY_ASSRD_AGE") = Trim(Me.txtDOB_ANB.Text)
                 End If
 
-  
+
 
                 drNewRow("TBIL_ANN_POLY_AGE_PROOF") = Trim(Me.txtDOB_Proof.Text)
                 drNewRow("TBIL_ANN_POLY_ASSRD_AGE") = Val(Trim(Me.txtDOB_ANB.Text))
@@ -1685,7 +1686,7 @@ Proc_Skip_Check:
                         '.Rows(0)("TBIL_ANN_POLY_ASSRD_AGE") = Trim(Me.txtDOB_ANB.Text)
                     End If
 
-                
+
 
                     .Rows(0)("TBIL_ANN_POLY_AGE_PROOF") = Trim(Me.txtDOB_Proof.Text)
                     .Rows(0)("TBIL_ANN_POLY_ASSRD_AGE") = Val(Trim(Me.txtDOB_ANB.Text))
@@ -1901,7 +1902,7 @@ PUpdate_Date1:
             Me.txtDeptNum.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_DEPT_CD") & vbNullString, String))
             Call gnProc_DDL_Get(Me.cboDepartment, RTrim(Me.txtDeptNum.Text))
 
-           
+
 
 
             If IsDate(objOLEDR("TBIL_ANN_POLY_RETIREMENT_DATE")) Then
