@@ -346,7 +346,7 @@ function cmdPfa_Browse_onclick() {
                                     <asp:TextBox ID="txtDOB" MaxLength="10" runat="server"></asp:TextBox>
                                     &nbsp;<asp:Label ID="lblDOB_Format" Text="dd/mm/yyyy" runat="server"></asp:Label></td>
                                 <td align="left" valign="top">
-                                    <asp:Label ID="lblDOB_ANB" Enabled="false" Text="Age (ANB):" runat="server"></asp:Label></td>
+                                    <asp:Label ID="lblDOB_ANB" Enabled="False" Text="Age:" runat="server"></asp:Label></td>
                                 <td align="left" valign="top">
                                     <asp:TextBox ID="txtDOB_ANB" Enabled="false" Width="40px" runat="server"></asp:TextBox>
                                 </td>
