@@ -94,24 +94,57 @@ Partial Class LoginP
     End Sub
 
     Protected Sub txtUserID_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtUserID.TextChanged
-        Select Case Trim(Me.txtUserID.Text)
-            Case "CRU"
-                Me.txtUserName.Text = "System Administrator"
-                Me.txtUser_PWD.Enabled = True
-                Me.txtUser_PWD.Focus()
-            Case "user1"
-                Me.txtUserName.Text = UCase("Life User 1")
-                Me.txtUser_PWD.Enabled = True
-                Me.txtUser_PWD.Focus()
-            Case "user2"
-                Me.txtUserName.Text = UCase("Life User 2")
-                Me.txtUser_PWD.Enabled = True
-                Me.txtUser_PWD.Focus()
-            Case "user3"
-                Me.txtUserName.Text = UCase("Life User 3")
-                Me.txtUser_PWD.Enabled = True
-                Me.txtUser_PWD.Focus()
-            Case Else
-        End Select
+        lblMessage.Text = ""
+        Dim mystrCONN_Chk As String = ""
+
+        Dim objOLEConn_Chk As OleDbConnection = Nothing
+        Dim objOLECmd_Chk As OleDbCommand = Nothing
+        Dim objOLEDR_Chk As OleDbDataReader
+
+        Dim myTmp_Chk As String
+        Dim myTmp_Ref As String
+        myTmp_Chk = "N"
+        myTmp_Ref = ""
+
+
+        mystrCONN_Chk = CType(Session("connstr"), String)
+        objOLEConn_Chk = New OleDbConnection()
+        objOLEConn_Chk.ConnectionString = mystrCONN_Chk
+
+        Try
+            'open connection to database
+            objOLEConn_Chk.Open()
+        Catch ex As Exception
+            lblMessage.Text = "Unable to connect to database. Reason: " & ex.Message
+            objOLEConn_Chk = Nothing
+            Exit Sub
+        End Try
+
+        Try
+            Dim User_Login = Trim(txtUserID.Text)
+            strSQL = "SELECT * FROM SEC_USER_LIFE_DETAIL WHERE SEC_USER_LOGIN='" & User_Login & "'"
+            objOLECmd_Chk = New OleDbCommand(strSQL, objOLEConn_Chk)
+            objOLECmd_Chk.CommandType = CommandType.Text
+            objOLEDR_Chk = objOLECmd_Chk.ExecuteReader()
+            If (objOLEDR_Chk.Read()) Then
+                Session("MyUserIDX") = Trim(Me.txtUserID.Text)
+                txtUserName.Text = objOLEDR_Chk("SEC_USER_NAME")
+            Else
+                Me.lblMessage.Text = "User ID does not exist"
+                txtUserName.Text = ""
+                Me.txtUserID.Enabled = True
+                Me.txtUserID.Focus()
+                Exit Sub
+            End If
+        Catch ex As Exception
+            Me.lblMessage.Text = "Error has occured. Reason: " & ex.Message.ToString()
+        End Try
+        objOLEDR_Chk = Nothing
+        objOLECmd_Chk.Dispose()
+        objOLECmd_Chk = Nothing
+        If objOLEConn_Chk.State = ConnectionState.Open Then
+            objOLEConn_Chk.Close()
+        End If
+        objOLEConn_Chk = Nothing
     End Sub
 End Class
