@@ -482,7 +482,7 @@ function cmdPfa_Browse_onclick() {
                                     <%--<asp:Button ID="cmdPfa_Browse" runat="server" Text="Button" />--%>
                                 </td>
                             </tr>
-                            <tr style="display: none;">
+                            <tr style="">
                                 <td align="left" valign="top">
                                     <asp:Label ID="Label4" Text="PFA:" runat="server"></asp:Label></td>
                                 <td align="left" valign="top" colspan="0">
