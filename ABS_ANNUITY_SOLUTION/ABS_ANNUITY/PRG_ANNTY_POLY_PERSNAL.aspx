@@ -484,26 +484,14 @@ function cmdPfa_Browse_onclick() {
                             </tr>
                             <tr style="">
                                 <td align="left" valign="top">
-                                    <asp:Label ID="Label4" Text="PFA:" runat="server"></asp:Label></td>
+                                    <asp:Label ID="Label4" Text="PFA PIN Number:" runat="server"></asp:Label></td>
                                 <td align="left" valign="top" colspan="0">
-                                    <asp:TextBox ID="txtPFA" Visible="true" Enabled="true" Width="250px" runat="server"></asp:TextBox>
-                                </td>
-                                <td align="left" valign="top">
-                                    <asp:Label ID="Label5" Text="PIN Number:" runat="server"></asp:Label></td>
-                                <td>
                                     <asp:TextBox ID="txtPIN" Visible="true" Enabled="true" Width="300px" runat="server"></asp:TextBox>
                                 </td>
-                            </tr>
-                            <tr>
                                 <td align="left" valign="top">
                                     <asp:Label ID="Label6" Text="Last Occupation:" runat="server"></asp:Label></td>
-                                <td align="left" valign="top" colspan="0">
+                                <td align="left">
                                     <asp:TextBox ID="txtLastOccupation" Visible="true" Enabled="true" Width="250px" runat="server"></asp:TextBox>
-                                </td>
-                                <td align="left" valign="top">
-                                    <asp:Label ID="Label7" Text="Bank Name:" runat="server"></asp:Label></td>
-                                <td>
-                                    <asp:TextBox ID="txtBankName" Visible="true" Enabled="true" Width="300px" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -513,25 +501,24 @@ function cmdPfa_Browse_onclick() {
                                     <asp:TextBox ID="txtAccountName" Visible="true" Enabled="true" Width="250px" runat="server"></asp:TextBox>
                                 </td>
                                 <td align="left" valign="top">
-                                    <asp:Label ID="Label9" Text="Account No:" runat="server"></asp:Label></td>
-                                <td>
-                                    <asp:TextBox ID="txtAccountNo" Visible="true" Enabled="true" Width="300px" runat="server"></asp:TextBox>
+                                    <asp:Label ID="Label7" Text="Bank Name:" runat="server"></asp:Label></td>
+                                <td align="left">
+                                    <asp:TextBox ID="txtBankName" Visible="true" Enabled="true" Width="300px" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
-
                             <tr>
                                 <td align="left" valign="top">
                                     <asp:Label ID="Label10" Text="Bank Ssort Code:" runat="server"></asp:Label></td>
                                 <td align="left" valign="top" colspan="0">
                                     <asp:TextBox ID="txtBankSortCode" Visible="true" Enabled="true" Width="250px" runat="server"></asp:TextBox>
                                 </td>
-                                <td align="left" valign="top" rowspan="2">
-                                    <asp:Label ID="Label11" Text="Bank Address:" runat="server"></asp:Label></td>
-                                <td rowspan="2" valign="top">
-                                    <asp:TextBox ID="txtBankAddress" Visible="true" Enabled="true" Width="300px" 
-                                        runat="server" TextMode="MultiLine"></asp:TextBox>
+                                <td align="left" valign="top">
+                                    <asp:Label ID="Label9" Text="Account No:" runat="server"></asp:Label></td>
+                                <td align="left">
+                                    <asp:TextBox ID="txtAccountNo" Visible="true" Enabled="true" Width="300px" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
+
                             <tr>
                                 <td align="left" valign="top">
                                     <asp:Label ID="Label12" Text="Retirement Date:" runat="server"></asp:Label></td>
@@ -540,6 +527,18 @@ function cmdPfa_Browse_onclick() {
                                         Width="171px" runat="server"></asp:TextBox>
                                     <asp:Label ID="lblDOB_Format0" Text="dd/mm/yyyy" runat="server"></asp:Label>
                                 </td>
+                                <td align="left" valign="top" rowspan="2">
+                                    <asp:Label ID="Label11" Text="Bank Address:" runat="server"></asp:Label></td>
+                                <td rowspan="2" valign="top" align="left">
+                                    <asp:TextBox ID="txtBankAddress" Visible="true" Enabled="true" Width="300px" 
+                                        runat="server" TextMode="MultiLine"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    &nbsp;</td>
+                                <td align="left" valign="top" colspan="0">
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td align="left" colspan="4" valign="top" class="myMenu_Title">Other Info</td>
