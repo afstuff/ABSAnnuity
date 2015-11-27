@@ -29,7 +29,7 @@ Partial Class PRG_ANNTY_POLY_DOCUMENT
     Dim strErrMsg As String
     Protected strUpdate_Sw As String
     'Dim rParams As String() = {"nw", "nw", "new", "new", "new", "new", "new", "new", "new", "new", "new"}
-    Dim rParams As String() = {"nw", "nw", "new", "new", "new", "new", "new", "new", "new"}
+    Dim rParams As String() = {"nw", "nw", "new", "new", "new", "new", "new", "new", "new", "new"}
     Dim ErrorInd As String
 
     Protected Sub cmdSearch_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdSearch.Click
@@ -225,6 +225,7 @@ Partial Class PRG_ANNTY_POLY_DOCUMENT
             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
             Exit Sub
         End If
+        Dim url As String = HttpContext.Current.Request.Url.AbsoluteUri
         rParams(0) = rblTransType.SelectedValue.Trim
         rParams(1) = "pPolicyNo="
         rParams(2) = txtFileNum.Text + "&"
@@ -234,7 +235,7 @@ Partial Class PRG_ANNTY_POLY_DOCUMENT
         rParams(6) = "null&"
         rParams(7) = "pParam3="
         rParams(8) = "null&"
-        'rParams(9) = "pLoggedName="
+        rParams(9) = url
         'rParams(10) = CType(Session("MyUserIDX"), String) + "&"
 
         Session("ReportParams") = rParams
