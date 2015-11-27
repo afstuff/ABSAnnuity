@@ -1616,6 +1616,7 @@ Proc_Skip_Check:
 
                 drNewRow("TBIL_ANN_POLY_LAST_EMPLOYER") = RTrim(Me.txtLastEmployer.Text)
                 drNewRow("TBIL_ANN_POLY_LAST_EMPLOYER_ADRES") = RTrim(Me.txtLastEmpAddr.Text)
+                'drNewRow("TBIL_ANN_POLY_RETIREE_PFA") = RTrim(Me.txtPFA.Text)
                 drNewRow("TBIL_ANN_POLY_RETIREE_PFA") = RTrim(Me.txtPfaNum.Text)
                 drNewRow("TBIL_ANN_POLY_RETIREE_PIN_NO") = RTrim(Me.txtPIN.Text)
                 drNewRow("TBIL_ANN_POLY_RETIREE_OCCUP") = RTrim(Me.txtLastOccupation.Text)
@@ -1705,7 +1706,7 @@ Proc_Skip_Check:
 
                     .Rows(0)("TBIL_ANN_POLY_LAST_EMPLOYER") = RTrim(Me.txtLastEmployer.Text)
                     .Rows(0)("TBIL_ANN_POLY_LAST_EMPLOYER_ADRES") = RTrim(Me.txtLastEmpAddr.Text)
-                    .Rows(0)("TBIL_ANN_POLY_RETIREE_PFA") = RTrim(Me.txtPFA.Text)
+                    '.Rows(0)("TBIL_ANN_POLY_RETIREE_PFA") = RTrim(Me.txtPFA.Text)
                     .Rows(0)("TBIL_ANN_POLY_RETIREE_PIN_NO") = RTrim(Me.txtPIN.Text)
                     .Rows(0)("TBIL_ANN_POLY_RETIREE_OCCUP") = RTrim(Me.txtLastOccupation.Text)
                     .Rows(0)("TBIL_ANN_POLY_ACCOUNT_NAME") = RTrim(Me.txtAccountName.Text)
@@ -1931,7 +1932,7 @@ PUpdate_Date1:
             Me.txtPfaName.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_RETIREE_PFA") & vbNullString, String))
             Me.txtLastEmployer.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_LAST_EMPLOYER") & vbNullString, String))
             Me.txtLastEmpAddr.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_LAST_EMPLOYER_ADRES") & vbNullString, String))
-            Me.txtPFA.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_RETIREE_PFA") & vbNullString, String))
+            'Me.txtPFA.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_RETIREE_PFA") & vbNullString, String))
             Me.txtPIN.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_RETIREE_PIN_NO") & vbNullString, String))
             Me.txtLastOccupation.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_RETIREE_OCCUP") & vbNullString, String))
             Me.txtAccountName.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_ACCOUNT_NAME") & vbNullString, String))
@@ -2081,14 +2082,14 @@ PUpdate_Date1:
             cbo_PfaName.SelectedIndex = 0
         End If
     End Sub
-    Protected Sub DoProc_Validate_Pfa(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPfaNum.TextChanged
-        If txtPfaNum.Text <> "" Then
-            Proc_GetPfa(txtPfaNum.Text)
-            'Else
-            '    Me.lblMsg.Text = "PFA search field can not be empty!"
-            '    FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
-            '    Exit Sub
-        End If
+    'Protected Sub DoProc_Validate_Pfa(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPfaNum.TextChanged
+    '    If txtPfaNum.Text <> "" Then
+    '        Proc_GetPfa(txtPfaNum.Text)
+    '        'Else
+    '        '    Me.lblMsg.Text = "PFA search field can not be empty!"
+    '        '    FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
+    '        '    Exit Sub
+    '    End If
 
-    End Sub
+    'End Sub
 End Class
