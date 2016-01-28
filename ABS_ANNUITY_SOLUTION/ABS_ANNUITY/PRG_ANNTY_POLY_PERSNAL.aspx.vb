@@ -1629,6 +1629,7 @@ Proc_Skip_Check:
                 End If
 
                 drNewRow("TBIL_ANN_POLY_RETIREE_PFA") = RTrim(txtPfaNum.Text)
+
                 drNewRow("TBIL_ANN_POLY_BANK_NAME") = RTrim(Me.txtBankName.Text)
                 drNewRow("TBIL_ANN_POLY_BANK_ADRES") = RTrim(Me.txtBankAddress.Text)
                 drNewRow("TBIL_ANN_POLY_BANK_SORT_CODE") = RTrim(Me.txtBankSortCode.Text)
@@ -1929,7 +1930,7 @@ PUpdate_Date1:
             Me.txtProStatus.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_PROPSL_ACCPT_STATUS") & vbNullString, String))
             Call gnProc_DDL_Get(Me.cboProStatus, RTrim(Me.txtProStatus.Text))
 
-            Me.txtPfaName.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_RETIREE_PFA") & vbNullString, String))
+            Me.txtPfaNum.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_RETIREE_PFA") & vbNullString, String))
             Me.txtLastEmployer.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_LAST_EMPLOYER") & vbNullString, String))
             Me.txtLastEmpAddr.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_LAST_EMPLOYER_ADRES") & vbNullString, String))
             'Me.txtPFA.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_RETIREE_PFA") & vbNullString, String))
