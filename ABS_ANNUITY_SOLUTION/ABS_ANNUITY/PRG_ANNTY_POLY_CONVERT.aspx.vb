@@ -291,7 +291,7 @@ Partial Class PRG_ANNTY_POLY_CONVERT
         myYear = Trim(Me.txtYear.Text)
         If Trim(txtPol_Num.Text) = "" Then
             'Me.txtPol_Num.Text = MOD_GEN.gnGet_Serial_File_Proposal_Policy(RTrim("GET_SN_AN_FIL_PRO_POL"), RTrim("POL"), Trim(myYear), RTrim("IL"), RTrim(Me.txtBraNum.Text), RTrim(Me.txtProductClass.Text), RTrim(Me.txtProduct_Num.Text), RTrim("I"), RTrim(""), RTrim(""))
-            Me.txtPol_Num.Text = MOD_GEN.gnGet_Serial_File_Proposal_Policy(RTrim("GET_SN_AN_FIL_PRO_POL"), RTrim("POL"), Trim(myYear), RTrim("AN"), RTrim(Me.txtBraNum.Text), RTrim(Me.txtProductClass.Text), RTrim(Me.txtProduct_Num.Text), RTrim("A"), RTrim(""), RTrim(""))
+            Me.txtPol_Num.Text = MOD_GEN.gnGet_Serial_File_Proposal_Policy(RTrim("GET_SN_AN_FIL_PRO_POL"), RTrim("POL"), Trim(myYear), RTrim("AN"), RTrim(Me.txtBraNum.Text), RTrim(Me.txtProductClass.Text), RTrim(Me.txtProduct_Num.Text), RTrim("I"), RTrim(""), RTrim(""))
         End If
 
         If Trim(txtPol_Num.Text) = "" Or Trim(Me.txtPol_Num.Text) = "0" Or Trim(Me.txtPol_Num.Text) = "*" Then
