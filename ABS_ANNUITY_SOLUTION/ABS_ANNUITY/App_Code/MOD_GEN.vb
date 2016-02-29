@@ -278,8 +278,7 @@ Public Module MOD_GEN
         Dim mystr_Key As String = ""
 
         Dim myint_C As Integer = 0
-        'Dim myRetValue As String = "0"
-        Dim myRetValue
+        Dim myRetValue As String = "0"
 
         'Dim myobj_dt As New System.Data.DataTable
         'Dim myobj_ds As New System.Data.DataSet
@@ -377,8 +376,7 @@ Public Module MOD_GEN
 
                 Select Case Trim(pvstr_GET_WHAT)
                     Case "GET_AN_PREMIUM_RATE"
-                        'myRetValue = RTrim(myole_DR("TBIL_PRM_RT_RATE") & vbNullString).ToString
-                        myRetValue = myole_DR("TBIL_PRM_RT_RATE")
+                        myRetValue = RTrim(myole_DR("TBIL_PRM_RT_RATE") & vbNullString).ToString
                         If pvRef_Misc Is Nothing Then
                         Else
                             pvRef_Misc.Text = RTrim(CType(myole_DR("TBIL_PRM_RT_PER") & vbNullString, String))
@@ -425,7 +423,7 @@ Public Module MOD_GEN
             End If
 
         Catch ex As Exception
-            'Throw ex
+            '   'Throw ex
             myRetValue = "ERR"
             If pvCtr_Label IsNot Nothing Then
                 If TypeOf pvCtr_Label Is System.Web.UI.WebControls.Label Then
@@ -2157,7 +2155,7 @@ gnGet_SN_End:
                 End If
 
             Case "02"
-                If (Val(strDteYY) \ 4) = 0 Then
+                If (Val(strDteYY) Mod 4) = 0 Then
                     If Val(strDteDD) > 29 Then
                         strDteMsg = strDteMsg & _
                             "  -> Invalid day in month. Month <" & strDteMM & ">" & _
