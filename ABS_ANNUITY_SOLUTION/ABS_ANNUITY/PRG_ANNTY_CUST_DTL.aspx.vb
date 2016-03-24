@@ -1,5 +1,6 @@
 ﻿Imports System.Data
 Imports System.Data.OleDb
+Imports CustodianAnnuity.Data
 Partial Class PRG_ANNTY_CUST_DTL
     Inherits System.Web.UI.Page
     Protected FirstMsg As String
@@ -24,6 +25,13 @@ Partial Class PRG_ANNTY_CUST_DTL
     Dim strSQL As String
 
     Dim strErrMsg As String
+    Dim MainAcctCode, SubAcctCode As String
+    Dim MainAcctDesc, SubAcctDesc As String
+    Dim SubCodeInitial As String
+    Dim AcctLevel As String
+    Dim MainGroup As String
+    Dim LedgerType As String
+    Dim Sub1Group As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         strTableName = "TBIL_INS_DETAIL"
@@ -536,6 +544,25 @@ Partial Class PRG_ANNTY_CUST_DTL
                 obj_DT.Rows.Add(drNewRow)
                 'obj_DT.AcceptChanges()
                 intC = objDA.Update(obj_DT)
+
+
+                'INSERTING INTO ACCOUNT CODES TABLE TBFN_ACCT_CODES
+                MainAcctDesc = ""
+                SubCodeInitial = Left(Me.txtCustNum.Text, 2)
+                AcctLevel = "S"
+                MainGroup = "001"
+                LedgerType = "T"
+                Sub1Group = ""
+                'MainAcctCode = hashHelper.GetMainAcctCode(cboCustCateg.SelectedValue, mystrCONN)
+                MainAcctCode = "3010012020" 'Annuity Main code
+                MainAcctDesc = "TRADE PAYABLE -ANNUITY" 'Annuity Main code Description
+                SubAcctDesc = Trim(Me.txtCustName.Text) & " " & Trim(Me.txtShortName.Text)
+                Dim SubAcctcodeSuffix = Trim(txtCustNum.Text.Substring(2))
+                SubAcctCode = "ANN-" & SubAcctcodeSuffix
+                hashHelper.InsertAcctChart("001", MainAcctCode, SubAcctCode, MainAcctDesc, SubAcctDesc, AcctLevel, _
+                  MainGroup, "", LedgerType, Sub1Group, "", "", "", "", "", "", "A", DateTime.Now, "001", mystrCONN)
+
+
 
                 drNewRow = Nothing
 

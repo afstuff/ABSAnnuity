@@ -1,0 +1,5 @@
+E:\AFRIK\ABS_ANNUITY_SOLUTION\CustodianAnnuity.Data\obj\Debug\ResolveAssemblyReference.cache
+E:\AFRIK\ABS_ANNUITY_SOLUTION\CustodianAnnuity.Data\bin\Debug\CustodianAnnuity.Data.dll
+E:\AFRIK\ABS_ANNUITY_SOLUTION\CustodianAnnuity.Data\bin\Debug\CustodianAnnuity.Data.pdb
+E:\AFRIK\ABS_ANNUITY_SOLUTION\CustodianAnnuity.Data\obj\Debug\CustodianAnnuity.Data.dll
+E:\AFRIK\ABS_ANNUITY_SOLUTION\CustodianAnnuity.Data\obj\Debug\CustodianAnnuity.Data.pdb
