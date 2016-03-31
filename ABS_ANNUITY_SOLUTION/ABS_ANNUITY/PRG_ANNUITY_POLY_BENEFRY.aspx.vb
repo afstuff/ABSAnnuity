@@ -1037,6 +1037,7 @@ Proc_Skip_ANB:
 
             Me.txtBenef_Address.Text = RTrim(CType(objOLEDR("TBIL_ANN_BENF_ADRESS") & vbNullString, String))
             Me.txtBenef_GuardianName.Text = RTrim(CType(objOLEDR("TBIL_ANN_BENF_GURDN_NM") & vbNullString, String))
+            lblOriginator.Text = "Record Originally created by " & GetRecordOriginator(RTrim(CType(objOLEDR("TBIL_ANN_BENF_OPERID") & vbNullString, String)))
 
             Me.lblFileNum.Enabled = False
             'Call DisableBox(Me.txtFileNum)

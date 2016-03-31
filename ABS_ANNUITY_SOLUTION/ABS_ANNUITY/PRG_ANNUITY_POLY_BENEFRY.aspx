@@ -81,6 +81,7 @@
 							<tr>
 								<td align="left" colspan="4" valign="top">
 									<asp:Label ID="lblMsg" ForeColor="Red" Font-Size="Small" runat="server"></asp:Label>
+								    <asp:Label ID="lblOriginator" runat="server" Font-Size="Small" ForeColor="Red"></asp:Label>
 								</td>
 							</tr>
 

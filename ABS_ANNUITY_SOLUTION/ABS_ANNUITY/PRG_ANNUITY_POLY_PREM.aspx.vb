@@ -1474,6 +1474,7 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
             Call gnProc_DDL_Get(Me.cboPrem_Rate_Code, RTrim(Me.txtPrem_Rate_Code.Text))
             Me.txtPrem_Rate.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RATE") & vbNullString, String))
             Me.txtPrem_Rate_Per.Text = RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_RATE_PER") & vbNullString, String))
+            lblOriginator.Text = "Record Originally created by " & GetRecordOriginator(RTrim(CType(objOLEDR("TBIL_ANN_POL_PRM_OPERID") & vbNullString, String)))
 
 
             Me.lblFileNum.Enabled = False

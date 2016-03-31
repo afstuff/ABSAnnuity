@@ -785,6 +785,7 @@ Partial Class PRG_ANNTY_POLY_CONVERT
                     End If
                 End If
                 '
+                lblOriginator.Text = "Record Originally created by " & GetRecordOriginator(RTrim(CType(objOLEDR_Chk("TBIL_ANN_POLY_OPERID") & vbNullString, String)))
 
             Else
                 myTmp_Chk = "N"

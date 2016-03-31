@@ -1943,6 +1943,7 @@ PUpdate_Date1:
             Me.txtBankSortCode.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_BANK_SORT_CODE") & vbNullString, String))
 
             Me.txtOtherRefNo.Text = RTrim(CType(objOLEDR("TBIL_ANN_POLY_REF_NEW") & vbNullString, String))
+            lblOriginator.Text = "Record Originally created by " & GetRecordOriginator(RTrim(CType(objOLEDR("TBIL_ANN_POLY_OPERID") & vbNullString, String)))
 
 
             Me.lblFileNum.Enabled = False
