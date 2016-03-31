@@ -14,7 +14,12 @@
 
     <script language="javascript" type="text/javascript" src="Script/SJS_02.js">
     </script>
-
+     <style>
+        .RecordOriginator
+        {
+            margin-left: 100px;
+        }
+    </style>
 </head>
 <body onload="<%= FirstMsg %>">
     <form id="Form1" name="Form1" runat="server">
@@ -95,7 +100,7 @@
                         <tr>
                             <td align="left" colspan="4" valign="top">
                                 <asp:Label ID="lblMsg" ForeColor="Red" Font-Size="Small" runat="server"></asp:Label>
-                                <asp:Label ID="lblOriginator" runat="server" Font-Size="Small" ForeColor="Red"></asp:Label>
+                                <asp:Label ID="lblOriginator" runat="server" Font-Size="Small" ForeColor="Red" CssClass="RecordOriginator"></asp:Label>
                             </td>
                         </tr>
                         <tr>

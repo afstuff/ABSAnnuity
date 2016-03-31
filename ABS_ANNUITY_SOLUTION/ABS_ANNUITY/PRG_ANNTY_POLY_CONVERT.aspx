@@ -10,6 +10,14 @@
     <title>Convert Proposal to Policy</title>
     <link rel="Stylesheet" href="SS_ILIFE.css" type="text/css" />
     <script language="javascript" type="text/javascript" src="Script/ScriptJS.js"></script>
+    
+     <style>
+        .RecordOriginator
+        {
+            margin-left: 100px;
+        }
+    </style>
+    
 </head>
 
 <body onload="<%= FirstMsg %>">
@@ -64,7 +72,7 @@
                     <tr>
                         <td align="left" colspan="2" valign="top">&nbsp;
                             <asp:Label ID="lblMsg" Text="Status..." ForeColor="Red" runat="server"></asp:Label>
-                            <asp:Label ID="lblOriginator" runat="server" Font-Size="Small" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="lblOriginator" runat="server" Font-Size="Small" ForeColor="Red" CssClass="RecordOriginator"></asp:Label>
                         </td>
                     </tr>
 
