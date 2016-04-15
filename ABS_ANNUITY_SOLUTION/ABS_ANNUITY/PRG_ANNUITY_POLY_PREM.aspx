@@ -196,7 +196,7 @@
                         </tr>
                         <tr>
                             <td nowrap align="left" valign="top">
-                                <asp:Label ID="lblPrem_MOP_Type" Text="Mode of Payment:" runat="server"></asp:Label>
+                                <asp:Label ID="lblPrem_MOP_Type" runat="server" Text="Mode of Payout:"></asp:Label>
                             </td>
                             <td align="left" valign="top" colspan="1">
                                 <asp:DropDownList ID="cboPrem_MOP_Type" Width="150px" AutoPostBack="true" runat="server"
@@ -216,7 +216,7 @@
                                     Width="40px" runat="server"></asp:TextBox>
                             </td>
                             <td align="left" valign="top">
-                                <asp:Label ID="lblPrem_MOP_Rate" Enabled="true" Text="Mod of Payment Rate:" runat="server"></asp:Label>
+                                <asp:Label ID="lblPrem_MOP_Rate" Text="Mode of Payout Rate:" runat="server"></asp:Label>
                             </td>
                             <td align="left" valign="top">
                                 <asp:TextBox ID="txtPrem_MOP_Rate" Enabled="false" runat="server"></asp:TextBox>
@@ -378,15 +378,15 @@
                         </tr>
                         <tr>
                             <td align="left" valign="top">
-                                <asp:Label ID="lblPrem_Ann_Contrib_LC" ToolTip="LC=Local Currency" Text="Annual Annuity LC:"
-                                    runat="server"></asp:Label>
+                                <asp:Label ID="lblPrem_Ann_Contrib_LC" runat="server" 
+                                    Text="Annual Annuity Payout LC:" ToolTip="LC=Local Currency"></asp:Label>
                             </td>
                             <td align="left" valign="top">
                                 <asp:TextBox ID="txtAnnualAnnuityLC" runat="server" Enabled="False"></asp:TextBox>
                             </td>
                             <td align="left" valign="top">
-                                <asp:Label ID="lblPrem_Ann_Contrib_FC" ToolTip="FC=Foreign Currency" Text="Annual Annuity FC:"
-                                    runat="server"></asp:Label>
+                                <asp:Label ID="lblPrem_Ann_Contrib_LC0" runat="server" 
+                                    Text="Annual Annuity Payout FC:" ToolTip="LC=Local Currency"></asp:Label>
                             </td>
                             <td align="left" valign="top">
                                 <asp:TextBox ID="txtAnnualAnnuityFC" Enabled="false" runat="server"></asp:TextBox>
@@ -394,16 +394,16 @@
                         </tr>
                         <tr>
                             <td align="left" valign="top">
-                                <asp:Label ID="lblPrem_Mth_Contrib_LC" ToolTip="LC=Local Currency" Text="Monthly Annuity LC:"
-                                    runat="server"></asp:Label>
+                                <asp:Label ID="lblPrem_Mth_Contrib_LC" runat="server" Text="Annuity Payout LC:" 
+                                    ToolTip="LC=Local Currency"></asp:Label>
                             </td>
                             <td align="left" valign="top">
                                 <asp:TextBox ID="txtMonthlyAnnuityLC" Enabled="false" MaxLength="15" 
                                     runat="server"></asp:TextBox>
                             </td>
                             <td align="left" valign="top">
-                                <asp:Label ID="lblPrem_Mth_Contrib_FC" ToolTip="FC=Foreign Currency" Text="Monthly Annuity FC:"
-                                    runat="server"></asp:Label>
+                                <asp:Label ID="lblPrem_Mth_Contrib_LC0" runat="server" 
+                                    Text="Annuity Payout FC:" ToolTip="LC=Local Currency"></asp:Label>
                             </td>
                             <td align="left" valign="top">
                                 <asp:TextBox ID="txtMonthlyAnnuityFC" Enabled="false" MaxLength="15" 

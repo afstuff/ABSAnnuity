@@ -529,7 +529,7 @@ function cmdPfa_Browse_onclick() {
 
                             <tr>
                                 <td align="left" valign="top">
-                                    <asp:Label ID="Label12" Text="Retirement Date:" runat="server"></asp:Label></td>
+                                    <asp:Label ID="lblRetirementDate" Text="Retirement Date:" runat="server"></asp:Label></td>
                                 <td align="left" valign="top" colspan="0">
                                     <asp:TextBox ID="txtRetirementDate" Visible="true" Enabled="true"
                                         Width="171px" runat="server"></asp:TextBox>

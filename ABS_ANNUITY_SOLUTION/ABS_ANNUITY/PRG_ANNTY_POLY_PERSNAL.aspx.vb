@@ -94,7 +94,8 @@ Partial Class PRG_ANNTY_POLY_PERSNAL
 
             Me.cboProduct.Items.Clear()
 
-            Call DoProc_CreateDataSource("IL_PRODUCT_CAT_LIST", Trim("I"), Me.cboProductClass)
+            'Call DoProc_CreateDataSource("IL_PRODUCT_CAT_LIST", Trim("I"), Me.cboProductClass)
+            Call DoProc_CreateDataSource("IL_PRODUCT_CAT_LIST_ANNUITY", Trim("I"), Me.cboProductClass) 'Azeez Select Annuity only
 
             Call gnProc_Populate_Box("IL_CODE_LIST", "001", Me.cboNationality)
             Call gnProc_Populate_Box("IL_CODE_LIST", "003", Me.cboBranch)
@@ -411,6 +412,16 @@ Partial Class PRG_ANNTY_POLY_PERSNAL
                 strSQL = strSQL & " FROM " & strTable
                 strSQL = strSQL & " WHERE TBIL_PRDCT_CAT_MDLE = '" & RTrim(pvTransType) & "'"
                 strSQL = strSQL & " OR TBIL_PRDCT_CAT_MDLE = '" & RTrim("I") & "'"
+                strSQL = strSQL & " ORDER BY TBIL_PRDCT_CAT_DESC"
+
+            Case "IL_PRODUCT_CAT_LIST_ANNUITY"
+                strTable = strTableName
+                strTable = RTrim("TBIL_PRODUCT_CAT")
+                strSQL = ""
+                strSQL = strSQL & "SELECT RTRIM(TBIL_PRDCT_CAT_MDLE) + '=' + RTRIM(TBIL_PRDCT_CAT_CD) AS MyFld_Value, TBIL_PRDCT_CAT_DESC AS MyFld_Text"
+                strSQL = strSQL & " FROM " & strTable
+                strSQL = strSQL & " WHERE TBIL_PRDCT_CAT_MDLE = '" & RTrim(pvTransType) & "'"
+                strSQL = strSQL & " AND TBIL_PRDCT_CAT_CD='A'"
                 strSQL = strSQL & " ORDER BY TBIL_PRDCT_CAT_DESC"
 
             Case "GL_PRODUCT_CAT_LIST"
@@ -1394,7 +1405,7 @@ Proc_Skip_Check:
         '--------------------- Validate retirement date start ----------
         myarrData = Split(Me.txtRetirementDate.Text, "/")
         If myarrData.Count <> 3 Then
-            Me.lblMsg.Text = "Missing or Invalid " & Me.lblDOB.Text & ". Expecting full date in ddmmyyyy format ..."
+            Me.lblMsg.Text = "Missing or Invalid " & Me.lblRetirementDate.Text & ". Expecting full date in ddmmyyyy format ..."
             FirstMsg = "Javascript:alert('" & Me.lblMsg.Text & "')"
             Exit Sub
         End If
