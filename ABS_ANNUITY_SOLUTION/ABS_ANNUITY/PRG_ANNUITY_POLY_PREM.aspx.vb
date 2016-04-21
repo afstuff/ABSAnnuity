@@ -950,7 +950,15 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
                             Exit Sub
                         End If
                         annualAnnuity = (purchaseAmount * rate) / ratePer
-                        monthlyAnnuity = annualAnnuity / 12
+                        If cboPrem_MOP_Type.SelectedValue = "M" Then
+                            monthlyAnnuity = annualAnnuity / 12
+                        ElseIf cboPrem_MOP_Type.SelectedValue = "Q" Then
+                            monthlyAnnuity = annualAnnuity / 4
+                        ElseIf cboPrem_MOP_Type.SelectedValue = "H" Then
+                            monthlyAnnuity = annualAnnuity / 2
+                        ElseIf cboPrem_MOP_Type.SelectedValue = "Y" Then
+                            monthlyAnnuity = annualAnnuity
+                        End If
 
                         txtAnnualAnnuityLC.Text = Format(CType(annualAnnuity, Decimal), "N2")
                         txtAnnualAnnuityFC.Text = Format(CType(annualAnnuity, Decimal), "N2")
@@ -977,7 +985,16 @@ Partial Class Annuity_PRG_ANNUITY_POLY_PREM
 
                         If rate <> 0 And ratePer <> 0 Then
                             annualAnnuity = (purchaseAmount * rate) / ratePer
-                            monthlyAnnuity = annualAnnuity / 12
+
+                            If cboPrem_MOP_Type.SelectedValue = "M" Then
+                                monthlyAnnuity = annualAnnuity / 12
+                            ElseIf cboPrem_MOP_Type.SelectedValue = "Q" Then
+                                monthlyAnnuity = annualAnnuity / 4
+                            ElseIf cboPrem_MOP_Type.SelectedValue = "H" Then
+                                monthlyAnnuity = annualAnnuity / 2
+                            ElseIf cboPrem_MOP_Type.SelectedValue = "Y" Then
+                                monthlyAnnuity = annualAnnuity
+                            End If
                         End If
 
                         txtAnnualAnnuityLC.Text = Format(CType(annualAnnuity, Decimal), "N2")
